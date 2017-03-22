@@ -1,5 +1,5 @@
 Ext.define('ES.view.Layout.Menu.MenuController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.layout-menu-menu'
+    alias: 'controller.menu'
     
 });

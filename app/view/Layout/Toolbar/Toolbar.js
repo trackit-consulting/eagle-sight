@@ -1,16 +1,26 @@
+Ext.define('ES.view.Layout.Toolbar.Toolbar', {
 
-Ext.define('ES.view.Layout.Toolbar.Toolbar',{
-    extend: 'Ext.panel.Panel',
-
+    extend: 'Ext.toolbar.Toolbar',
+    alias: 'widget.toolbar',
     requires: [
-        'ES.view.Layout.Toolbar.ToolbarController',
-        'ES.view.Layout.Toolbar.ToolbarModel'
+        'Ext.layout.container.Fit'
     ],
+    layout: 'fit',
+    controller: 'toolbar',
+    viewModel: 'toolbar',
 
-    controller: 'layout-toolbar-toolbar',
-    viewModel: {
-        type: 'layout-toolbar-toolbar'
-    },
+/*
+    items: [{
 
-    html: 'Hello, World!!'
+        text: 'abc',
+        checked: false,
+        group: 'theme',
+        handler: function() {
+
+        }
+      
+    }]
+    */
+
+
 });
