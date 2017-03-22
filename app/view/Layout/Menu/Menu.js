@@ -1,16 +1,19 @@
-
 Ext.define('ES.view.Layout.Menu.Menu',{
     extend: 'Ext.panel.Panel',
-
+    alias: 'widget.menu',
+			width: '150',
+            height: '350',
     requires: [
-        'ES.view.Layout.Menu.MenuController',
-        'ES.view.Layout.Menu.MenuModel'
+        'Ext.layout.container.Fit'
     ],
-
-    controller: 'layout-menu-menu',
-    viewModel: {
-        type: 'layout-menu-menu'
-    },
-
-    html: 'Hello, World!!'
+    layout: 'fit',
+    controller: 'menu',
+    viewModel: 'menu',
+        items: [{
+        text: 'abc',
+        checked: false,
+        group: 'theme',
+        handler: function() {
+        }
+    }]
 });

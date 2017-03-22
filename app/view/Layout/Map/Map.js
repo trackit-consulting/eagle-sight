@@ -1,16 +1,13 @@
-
 Ext.define('ES.view.Layout.Map.Map',{
-    extend: 'Ext.panel.Panel',
-
+    
+    extend: 'Ext.ux.GMapPanel',
+    alias: 'widget.map',
     requires: [
-        'ES.view.Layout.Map.MapController',
-        'ES.view.Layout.Map.MapModel'
+        'Ext.layout.container.Fit'
     ],
+    layout: 'fit',
+    controller: 'map',
+    viewModel: 'map',
+    center: new google.maps.LatLng(40.350054, -8.5809265)
 
-    controller: 'layout-map-map',
-    viewModel: {
-        type: 'layout-map-map'
-    },
-
-    html: 'Hello, World!!'
 });
