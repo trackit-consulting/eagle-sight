@@ -4,5 +4,4 @@ Ext.define('ES.view.Layout.LayoutModel', {
     data: {
         name: 'ES'
     }
-
 });

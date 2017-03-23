@@ -3,6 +3,7 @@ $image-search-path: 'C:/Users/manuel/Documents/GitHub/eagle-sight/build/developm
 $theme-name:  dynamic( 'theme-triton' );
 $include-es-application: dynamic(true);;
 $include-es-store-personnel: dynamic(true);;
+$include-es-store-timeline: dynamic(true);;
 $include-es-view-layout-layout: dynamic(true);;
 $include-es-view-layout-layoutcontroller: dynamic(true);;
 $include-es-view-layout-layoutmodel: dynamic(true);;
@@ -17,6 +18,7 @@ $include-es-view-layout-toolbar-toolbarcontroller: dynamic(true);;
 $include-es-view-layout-toolbar-toolbarmodel: dynamic(true);;
 $include-es-view-main-list: dynamic(true);;
 $include-es-view-main-main: dynamic(true);;
+$include-es-view-main-timelinelist: dynamic(true);;
 $include-ext-abstractcomponent: dynamic(true);;
 $include-ext-abstractcontainer: dynamic(true);;
 $include-ext-abstractmanager: dynamic(true);;
