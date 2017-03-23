@@ -65,7 +65,7 @@ wsServer.on('request', function(request) {
                 }else{
                     connection.close();
                 }
-
+ 
             });
 
         } else if (message.type === 'binary') {
