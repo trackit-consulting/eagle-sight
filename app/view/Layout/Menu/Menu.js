@@ -16,4 +16,5 @@ Ext.define('ES.view.Layout.Menu.Menu',{
         handler: function() {
         }
     }]
+
 });

@@ -4,5 +4,4 @@ Ext.define('ES.view.Layout.Menu.MenuModel', {
     data: {
         name: 'ES'
     }
-
-});
+    });

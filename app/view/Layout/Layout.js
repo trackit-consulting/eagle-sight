@@ -10,8 +10,10 @@ Ext.define('ES.view.Layout.Layout', {
         'ES.view.Layout.LayoutModel',
         'ES.view.Layout.Toolbar.ToolbarController',
         'ES.view.Layout.Toolbar.ToolbarModel',
+        //'ES.view.Layout.Menu.Menu',
 
     ],
+
     controller: 'layout',
     viewModel: 'layout',
     layout: 'border',
@@ -29,15 +31,22 @@ Ext.define('ES.view.Layout.Layout', {
                 background: 'linear-gradient(to left, #517fa4 , #243949)',
             }
         },
-		{
-		    xtype: 'menu',
-			region: 'west',
-            width: 250,
+		    {
+		    region:'west',
+			layout:'fit',
+			xtype:'timelinelist',
+            title:'Timeline',
+            width: 300,
+            collapsible: true,
             height: 500,
             style: {
                 background: 'linear-gradient(to left, #385871 , #507ea3)',
             }
-		}
-
+            
+        }
     ]
+
+    
 });
+
+
