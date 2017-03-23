@@ -1,0 +1,16 @@
+{
+  "name": "node-and-socket-example",
+  "version": "1.0.0",
+  "description": "node-and-socket-example\r =======================",
+  "main": "server.js",
+  "dependencies": {
+    "http": "0.0.0",
+    "socket.io": "^1.7.2",
+    "websocket": "^1.0.24"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  }
+}
