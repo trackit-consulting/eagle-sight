@@ -108,8 +108,8 @@ Ext.define('ES.view.Layout.Map.MapController', {
                             var flightPath = new google.maps.Polyline({
                                 path: flightPathCoordinates,
                                 geodesic: true,
-                                strokeColor: '#517fa4',
-                                strokeOpacity: 0.6,
+                                strokeColor: '#5443b2',
+                                strokeOpacity: 0.8,
                                 strokeWeight: 4
                             });
 

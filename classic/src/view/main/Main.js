@@ -17,8 +17,6 @@ Ext.define('ES.view.main.Main', {
     layout: 'fit',	
     items: [{
             xtype: 'layout'
-            
-
     }
     
     ]
