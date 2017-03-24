@@ -13,8 +13,6 @@ Ext.define('ES.view.main.RouteList', {
         type: 'routedata'
     },
 
-    //Latitude, longitude, arrival time, distance, sentido, km andados, velocidade
-    //lat, lng, at, distance, direction, dkm, vel
     forceFit: true,
 
     columns: {
