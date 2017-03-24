@@ -1,5 +1,5 @@
-Ext.define('ES.view.Layout.Map.Map',{
-    
+Ext.define('ES.view.Layout.Map.Map', {
+
     extend: 'Ext.ux.GMapPanel',
     alias: 'widget.map',
     requires: [
@@ -13,91 +13,108 @@ Ext.define('ES.view.Layout.Map.Map',{
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         minZoom: 7,
         streetViewControlOptions: {
-        position: google.maps.ControlPosition.RIGHT_TOP
-    },
+            position: google.maps.ControlPosition.RIGHT_TOP
+        },
         zoomControlOptions: {
-        position: google.maps.ControlPosition.RIGHT_CENTER
-    },
+            position: google.maps.ControlPosition.RIGHT_CENTER
+        },
         styles: [{
-            
-                "featureType": "landscape",
-                "elementType": "all",
+                "featureType": "road",
                 "stylers": [{
-                    "color": "#E4E3E2"
-                }]
-            },
-            {
-                "featureType": "water",
-                "elementType": "all",
-                "stylers": [{
-                    "color": "#0C7CA5"
-                }]
-            },
-            {
-                "featureType": "poi",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#E4E3E2"
-                }]
-            },
-            {
-                "featureType": "road.highway",
-                "elementType": "geometry.fill",
-                "stylers": [{
-                    "color": "#FEFEFE"
-                }]
-            },
-            {
-                "featureType": "road.highway",
-                "elementType": "geometry.stroke",
-                "stylers": [{
-                        "color": "#FEFEFE"
+                        "hue": "#5e00ff"
                     },
                     {
-                        "weight": 0.5
+                        "saturation": -79
                     }
                 ]
             },
             {
-                "featureType": "road.arterial",
-                "elementType": "geometry.fill",
+                "featureType": "poi",
                 "stylers": [{
-                    "color": "#FEFEFE"
-                }]
-            },
-            {
-                "featureType": "road.arterial",
-                "elementType": "geometry.stroke",
-                "stylers": [{
-                        "color": "#FEFEFE"
+                        "saturation": -78
                     },
                     {
-                        "weight": 0.5
+                        "hue": "#6600ff"
+                    },
+                    {
+                        "lightness": -47
+                    },
+                    {
+                        "visibility": "off"
                     }
                 ]
             },
             {
                 "featureType": "road.local",
-                "elementType": "geometry",
                 "stylers": [{
-                    "color": "#FEFEFE"
+                    "lightness": 22
                 }]
             },
             {
-                "featureType": "transit",
-                "elementType": "all",
+                "featureType": "landscape",
                 "stylers": [{
-                    "color": "#FEFEFE"
+                        "hue": "#6600ff"
+                    },
+                    {
+                        "saturation": -11
+                    }
+                ]
+            },
+            {},
+            {},
+            {
+                "featureType": "water",
+                "stylers": [{
+                        "saturation": -65
+                    },
+                    {
+                        "hue": "#1900ff"
+                    },
+                    {
+                        "lightness": 8
+                    }
+                ]
+            },
+            {
+                "featureType": "road.local",
+                "stylers": [{
+                        "weight": 1.3
+                    },
+                    {
+                        "lightness": 30
+                    }
+                ]
+            },
+            {
+                "featureType": "transit",
+                "stylers": [{
+                        "visibility": "simplified"
+                    },
+                    {
+                        "hue": "#5e00ff"
+                    },
+                    {
+                        "saturation": -16
+                    }
+                ]
+            },
+            {
+                "featureType": "transit.line",
+                "stylers": [{
+                    "saturation": -72
                 }]
-            }
+            },
+            {}
         ]
     },
-     dockedItems: [{
+    dockedItems: [{
 
         xtype: 'mainlist',
         preventHeader: true,
         //overlay : true,
-        dock: 'bottom'
+        dock: 'bottom',
+
+
     }]
-    
+
 });

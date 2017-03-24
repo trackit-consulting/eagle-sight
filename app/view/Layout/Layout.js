@@ -9,16 +9,14 @@ Ext.define('ES.view.Layout.Layout', {
         'ES.view.Layout.LayoutController',
         'ES.view.Layout.LayoutModel',
         'ES.view.Layout.Toolbar.ToolbarController',
-        'ES.view.Layout.Toolbar.ToolbarModel',
-        //'ES.view.Layout.Menu.Menu',
+        'ES.view.Layout.Toolbar.ToolbarModel'
 
     ],
 
     controller: 'layout',
     viewModel: 'layout',
     layout: 'border',
-    items: [
-        {
+    items: [{
             xtype: 'map',
             region: 'center',
         },
@@ -26,27 +24,28 @@ Ext.define('ES.view.Layout.Layout', {
             xtype: 'toolbar',
             region: 'north',
             plugins: 'responsive',
-            height: 45,
+            height: 80,
             style: {
-                background: 'linear-gradient(to left, #517fa4 , #243949)',
-            }
+                background: 'linear-gradient(to left, #4e4376,#2b5876)',
+                'text-align': 'center',
+                'vertical-align': 'middle'
+            },
+
         },
-		    {
-		    region:'west',
-			layout:'fit',
-			xtype:'timelinelist',
-            title:'Timeline',
-            width: 300,
+        {
+            region: 'west',
+            layout: 'fit',
+            xtype: 'timelinelist',
+            title: 'Timeline',
+            width: 320,
             collapsible: true,
             height: 500,
             style: {
                 background: 'linear-gradient(to left, #385871 , #507ea3)',
             }
-            
+
         }
     ]
 
-    
+
 });
-
-
