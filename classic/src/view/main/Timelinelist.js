@@ -23,6 +23,7 @@ Ext.define('ES.view.main.Timelinelist', {
 
         items: [{
                 text: 'Time',
+                flex: 1,
                 dataIndex: 'time',
                 align: 'center',
                 height: 60,
@@ -38,6 +39,7 @@ Ext.define('ES.view.main.Timelinelist', {
             {
                 text: 'Adress',
                 dataIndex: 'adress',
+                flex: 1,
                 align: 'center',
                 height: 60,
                 style: {
@@ -55,7 +57,6 @@ Ext.define('ES.view.main.Timelinelist', {
                 dataIndex: 'dir',
                 flex: 1,
                 align: 'right',
-                width: 75,
                 height: 60,
                 style: {
                     "background-color": "#2f699b",
