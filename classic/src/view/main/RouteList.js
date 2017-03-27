@@ -54,21 +54,6 @@ Ext.define('ES.view.main.RouteList', {
                 },
             },
             {
-                text: 'Direction',
-                dataIndex: 'direction',
-                height: 45,
-                align: 'center',
-                style: {
-                    "background-color": "#2a3136",
-                    "color": "white",
-                    "border-right": "1px solid #353c42"
-                },
-                renderer: function(value, metaData) {
-                    metaData.style = "background-color:#353c42; color: white; border-right: 1px solid #4b5055;";
-                    return value;
-                },
-            },
-            {
                 text: 'Travelled Distance',
                 dataIndex: 'dkm',
                 height: 45,
