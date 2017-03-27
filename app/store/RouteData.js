@@ -2,18 +2,34 @@ Ext.define('ES.store.RouteData', {
     extend: 'Ext.data.Store',
     alias: 'store.routedata',
 
+    storeId: 'routedata',
     fields: [
-        'name', 'email', 'phone'
+        'at', 'dkm', 'vel', 'countdown'
     ],
-    data: { items: [
-        {at: '3', distance: '4', dkm: '6', vel: '7' }
-    ]},
+    autoLoad: true,
+    data: {
+        storeId: 'routedata',
+        query: [{
+                at: '',
+                dkm: '',
+                vel: '',
+                countdown: ''
+            },
+            {
+                at: '',
+                dkm: '',
+                vel: '',
+                countdown: ''
+            }
+        ]
+    },
 
     proxy: {
         type: 'memory',
         reader: {
             type: 'json',
-            rootProperty: 'items'
+            rootProperty: 'query'
         }
     }
+
 });

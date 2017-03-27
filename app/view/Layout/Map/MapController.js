@@ -25,6 +25,10 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                         var timelineStore = Ext.getStore('timeline');
 
+                        //Calling route information store
+
+                        var routeStore = Ext.getStore('routedata');
+
                         //Delaying geocoder requests
 
                         var countRequest = 0;
@@ -128,23 +132,23 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                 strokeOpacity: 0.8,
                                 strokeWeight: 4,
                                 icons: [{
-                                icon: lineSymbol,
-                                offset: '100%'
+                                    icon: lineSymbol,
+                                    offset: '100%'
                                 }],
                             });
 
                             animateCircle(flightPath);
 
-function animateCircle(line) {
-    var count = 0;
-    var test = window.setInterval(function() {
-      count = (count + 1) % 200;
+                            function animateCircle(line) {
+                                var count = 0;
+                                var test = window.setInterval(function() {
+                                    count = (count + 1) % 200;
 
-      var icons = line.get('icons');
-      icons[0].offset = (count / 2) + '%';
-      line.set('icons', icons);
-  }, 10);
-} 
+                                    var icons = line.get('icons');
+                                    icons[0].offset = (count / 2) + '%';
+                                    line.set('icons', icons);
+                                }, 10);
+                            }
 
                             var polylineData = {
                                 lat: parseFloat(JSON.parse(e.data).loc.lat),
@@ -175,6 +179,15 @@ function animateCircle(line) {
                             var lat2 = parseFloat(localStorage.getItem('lat'));
                             var lon2 = parseFloat(localStorage.getItem('lng'));
                             var vel = parseFloat(JSON.parse(e.data).gsp);
+
+                            routeStore.each(function(rec) {
+                                if (rec.internalId == 1) {
+                                    rec.set("at", minTommss(getArrivalTime(getDistance(lat1, lon1, lat2, lon2), vel)));
+                                    rec.set("distance", getDistance(lat1, lon1, lat2, lon2));
+                                    rec.set("dkm", getDistance(lat1, lon1, lat2, lon2));
+                                    rec.set("vel", vel);
+                                }
+                            });
 
                             //Get the distance between two locations
 
@@ -224,6 +237,7 @@ function animateCircle(line) {
                                 lng: parseFloat(JSON.parse(e.data).loc.lon),
                                 dist: getDistance(lat1, lon1, lat2, lon2)
                             };
+                        
 
                             //Get current date
 
@@ -239,7 +253,8 @@ function animateCircle(line) {
                                 lat: parseFloat(JSON.parse(e.data).loc.lat),
                                 lng: parseFloat(JSON.parse(e.data).loc.lon),
                                 address: "Show Up",
-                                dir: degToCompass(parseFloat(JSON.parse(e.data).hdg))
+                                dir: degToCompass(parseFloat(JSON.parse(e.data).hdg)),
+                                vel: vel
                             };
 
                             //Degrees to compass (vehicle direction)
@@ -249,10 +264,10 @@ function animateCircle(line) {
                                 var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
                                 return arr[(val % 16)];
                             }
- 
+
                             //Put data on timeline
 
-                            timelineStore.insert(0,specifyInfo);
+                            timelineStore.insert(0, specifyInfo);
 
                             //Put polylines on map
 
@@ -266,9 +281,9 @@ function animateCircle(line) {
 
                         };
 
-                            
+
                     }
-                    
+
                 }
             }
         }

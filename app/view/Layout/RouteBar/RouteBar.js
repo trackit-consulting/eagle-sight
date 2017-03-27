@@ -1,27 +1,23 @@
-/**
- * This view is an example list of people.
- */
-Ext.define('ES.view.main.RouteList', {
+Ext.define('ES.view.Layout.RouteBar.RouteBar', {
     extend: 'Ext.grid.Panel',
-    xtype: 'mainlist',
-    requires: [
-        'ES.store.RouteData'
-    ],
+    alias: 'widget.routebar',
 
     title: 'RouteData',
+    controller: 'routebar',
+    viewModel: 'routebar',
+    forceFit: true,
     store: {
         type: 'routedata'
     },
-
-    forceFit: true,
-
+    viewConfig:{
+    markDirty:false
+    },
     columns: {
         border: false,
         defaults: {
-            hoverCls: '',
+            hoverCls: ''
 
         },
-
 
         items: [{
                 text: 'Arrival Time',
@@ -34,13 +30,20 @@ Ext.define('ES.view.main.RouteList', {
                     "border-right": "1px solid #353c42"
                 },
                 renderer: function(value, metaData) {
-                    metaData.style = "background-color:#353c42; color: white;  border-right: 1px solid #4b5055";
+                    var color;
+                    if (metaData.rowIndex == 1) {
+                        color = "#381f2e";
+                    } else {
+                        color = "#353c42";
+                    }
+
+                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #4b5055";
                     return value;
                 },
             },
             {
-                text: 'Distance',
-                dataIndex: 'distance',
+                text: 'Page Countdown',
+                dataIndex: 'countdown',
                 height: 45,
                 align: 'center',
                 style: {
@@ -49,12 +52,19 @@ Ext.define('ES.view.main.RouteList', {
                     "border-right": "1px solid #353c42"
                 },
                 renderer: function(value, metaData) {
-                    metaData.style = "background-color:#353c42; color: white; border-right: 1px solid #4b5055";
+                    var color;
+                    if (metaData.rowIndex == 1) {
+                        color = "#381f2e";
+                    } else {
+                        color = "#353c42";
+                    }
+
+                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #4b5055";
                     return value;
                 },
             },
             {
-                text: 'Travelled Distance',
+                text: 'Travelled Distance (km)',
                 dataIndex: 'dkm',
                 height: 45,
                 align: 'center',
@@ -64,12 +74,19 @@ Ext.define('ES.view.main.RouteList', {
                     "border-right": "1px solid #353c42"
                 },
                 renderer: function(value, metaData) {
-                    metaData.style = "background-color:#353c42; color: white; border-right: 1px solid #4b5055;";
+                    var color;
+                    if (metaData.rowIndex == 1) {
+                        color = "#381f2e";
+                    } else {
+                        color = "#353c42";
+                    }
+
+                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #4b5055";
                     return value;
                 },
             },
             {
-                text: 'Speed',
+                text: 'Speed (km/h)',
                 dataIndex: 'vel',
                 height: 45,
                 align: 'center',
@@ -79,17 +96,17 @@ Ext.define('ES.view.main.RouteList', {
                     "border-right": "1px solid #353c42"
                 },
                 renderer: function(value, metaData) {
-                    metaData.style = "background-color:#353c42; color: white;";
+                    var color;
+                    if (metaData.rowIndex == 1) {
+                        color = "#381f2e";
+                    } else {
+                        color = "#353c42";
+                    }
+
+                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #4b5055";
                     return value;
                 },
             }
         ]
-    },
-
-    listeners: {
-        select: 'onItemSelected',
-        init: function() {
-
-        }
     }
 });

@@ -112,9 +112,9 @@ Ext.define('ES.view.Layout.Map.Map', {
     },
     dockedItems: [{
 
-        xtype: 'mainlist',
+        xtype: 'routebar',
         preventHeader: true,
-        dock: 'bottom',
+        dock: 'bottom'
 
     }],
 
@@ -131,8 +131,7 @@ Ext.define('ES.view.Layout.Map.Map', {
         infowindow.open(this.gmap, marker);
 
         google.maps.event.addListener(infowindow,'closeclick',function(){
-        marker.setMap(null); //removes the marker
-        // then, remove the infowindows name from the array
+        marker.setMap(null);
         });
     }
 
