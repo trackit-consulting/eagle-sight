@@ -3,7 +3,7 @@ Ext.define('ES.store.Timeline', {
     alias: 'store.timeline',
     storeId: 'timeline',
     fields: [
-        'time', 'lat', 'lng', 'address', 'dir'
+        'time', 'lat', 'lng', 'address', 'dir', 'vel'
     ],
     autoLoad: true,
     sorters: [
@@ -13,7 +13,7 @@ Ext.define('ES.store.Timeline', {
             }
         ],
     data: { 
-        storeId: 'timeline',
+        //storeId: 'timeline',
         query: [
     ]},
 
