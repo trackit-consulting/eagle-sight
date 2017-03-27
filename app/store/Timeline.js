@@ -1,17 +1,20 @@
 Ext.define('ES.store.Timeline', {
     extend: 'Ext.data.Store',
-
     alias: 'store.timeline',
-
+    storeId: 'timeline',
     fields: [
-        'time', 'adress', 'dir'
+        'time', 'lat', 'lng', 'address', 'dir'
     ],
-
-    data: { query: [
-        { time: '11h:50min', adress: "Viaduto António Pacheco",   dir: "North" },
-        { time: '00h:30min',     adress: "A1",                    dir: "South" },
-        { time: '09h:45min',   adress: "Av. Luisa Todi",          dir: "West" },
-        { time: '19h:10min',     adress: "Rua Sergio Calado",     dir: "East" }
+    autoLoad: true,
+    sorters: [
+            {
+                property: 'time',
+                direction: 'DESC'
+            }
+        ],
+    data: { 
+        storeId: 'timeline',
+        query: [
     ]},
 
     proxy: {

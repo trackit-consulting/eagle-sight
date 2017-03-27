@@ -5,6 +5,9 @@ Ext.define('ES.view.Layout.Map.Map', {
     requires: [
         'Ext.layout.container.Fit'
     ],
+    store: {
+        type: 'timeline'
+    },
     layout: 'fit',
     controller: 'map',
     viewModel: 'map',
@@ -111,10 +114,26 @@ Ext.define('ES.view.Layout.Map.Map', {
 
         xtype: 'mainlist',
         preventHeader: true,
-        //overlay : true,
         dock: 'bottom',
 
+    }],
 
-    }]
+    addInfoWindow: function(string, lat, lng) {
+        var pos = new google.maps.LatLng(lat, lng);
+        var infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+            position: pos,
+            title: 'My map',
+            map: this.gmap
+        });
+
+        infowindow.setContent(string);
+        infowindow.open(this.gmap, marker);
+
+        google.maps.event.addListener(infowindow,'closeclick',function(){
+        marker.setMap(null); //removes the marker
+        // then, remove the infowindows name from the array
+        });
+    }
 
 });

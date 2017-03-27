@@ -9,6 +9,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
         'Ext.ux.IFrame',
         'Ext.window.Window'
     ],
+
     config: {
         listen: {
             component: {
@@ -16,9 +17,18 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                     mapready: function(gmappanel) {
 
+                        //Calling polyline store
+
                         var polylineStore = this.getView().getViewModel().getStore('Polyline');
-                        var distanceStore = this.getView().getViewModel().getStore('Distance');
-                        var arrivalTimeStore = this.getView().getViewModel().getStore('ArrivalTime');
+
+                        //Calling timeline store
+
+                        var timelineStore = Ext.getStore('timeline');
+
+                        //Delaying geocoder requests
+
+                        var countRequest = 0;
+                        var newRequest = true;
 
                         //Receiving parameters from the Token
 
@@ -105,13 +115,36 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                             //Drawing Polylines
 
+                            var lineSymbol = {
+                                path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
+                                scale: 2,
+                                strokeColor: '#8d02ff'
+                            };
+
                             var flightPath = new google.maps.Polyline({
                                 path: flightPathCoordinates,
                                 geodesic: true,
                                 strokeColor: '#5443b2',
                                 strokeOpacity: 0.8,
-                                strokeWeight: 4
+                                strokeWeight: 4,
+                                icons: [{
+                                icon: lineSymbol,
+                                offset: '100%'
+                                }],
                             });
+
+                            animateCircle(flightPath);
+
+function animateCircle(line) {
+    var count = 0;
+    var test = window.setInterval(function() {
+      count = (count + 1) % 200;
+
+      var icons = line.get('icons');
+      icons[0].offset = (count / 2) + '%';
+      line.set('icons', icons);
+  }, 10);
+} 
 
                             var polylineData = {
                                 lat: parseFloat(JSON.parse(e.data).loc.lat),
@@ -141,7 +174,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
                             var lon1 = parseFloat(JSON.parse(e.data).loc.lon);
                             var lat2 = parseFloat(localStorage.getItem('lat'));
                             var lon2 = parseFloat(localStorage.getItem('lng'));
-                            var vel =  parseFloat(JSON.parse(e.data).gsp);
+                            var vel = parseFloat(JSON.parse(e.data).gsp);
 
                             //Get the distance between two locations
 
@@ -192,13 +225,34 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                 dist: getDistance(lat1, lon1, lat2, lon2)
                             };
 
-                            //Store Arrival Time
+                            //Get current date
 
-                            arrivalTimeStore.add(arrivalTime);
+                            var date = new Date();
+                            var hour = ("0" + date.getHours()).substr(-2);
+                            var minutes = ("0" + date.getMinutes()).substr(-2);
+                            var seconds = ("0" + date.getSeconds()).substr(-2);
 
-                            //Store Get Distance
+                            //Get values to insert on timeline
 
-                            distanceStore.add(getDistance);
+                            var specifyInfo = {
+                                time: hour + ":" + minutes + ":" + seconds,
+                                lat: parseFloat(JSON.parse(e.data).loc.lat),
+                                lng: parseFloat(JSON.parse(e.data).loc.lon),
+                                address: "Show Up",
+                                dir: degToCompass(parseFloat(JSON.parse(e.data).hdg))
+                            };
+
+                            //Degrees to compass (vehicle direction)
+
+                            function degToCompass(num) {
+                                var val = Math.floor((num / 22.5) + 0.5);
+                                var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+                                return arr[(val % 16)];
+                            }
+ 
+                            //Put data on timeline
+
+                            timelineStore.insert(0,specifyInfo);
 
                             //Put polylines on map
 
@@ -212,15 +266,11 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                         };
 
+                            
                     }
+                    
                 }
             }
         }
-    },
-
-    init: function() {
-
-
     }
-
 });

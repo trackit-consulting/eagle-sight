@@ -35,7 +35,7 @@ Ext.define('ES.view.Layout.Layout', {
         {
             region: 'west',
             layout: 'fit',
-            xtype: 'timelinelist',
+            xtype: 'menu',
             title: 'Timeline',
             width: 320,
             collapsible: true,

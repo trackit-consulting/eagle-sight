@@ -11,18 +11,6 @@ Ext.define('ES.view.Layout.Map.MapModel', {
                 {lat: 38.6509715, lng: -9.0598949}
             ]
         },
-        Distance: {
-            storeId: 'Distance',
-            autoLoad: true,
-            fields: ['lat', 'lng', 'dist'],
-            data: []
-        },
-        ArrivalTime: {
-            storeId: 'ArrivalTime',
-            autoLoad: true,
-            fields: ['lat', 'lng', 'time'],
-            data: []
-        },
         Polyline: {
             storeId: 'Polyline',
             autoLoad: true,
