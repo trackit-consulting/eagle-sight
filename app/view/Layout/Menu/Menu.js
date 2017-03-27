@@ -2,7 +2,6 @@ Ext.define('ES.view.Layout.Menu.Menu', {
 
     extend: 'Ext.grid.Panel',
     alias: 'widget.menu',
-    xtype: 'timelinelist',
     controller: 'menu',
     viewModel: 'menu',
     
