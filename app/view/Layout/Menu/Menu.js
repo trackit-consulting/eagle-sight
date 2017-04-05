@@ -19,7 +19,7 @@ Ext.define('ES.view.Layout.Menu.Menu', {
         },
 
         items: [{
-                text: 'Time',
+                text: locale.time,
                 flex: 1,
                 dataIndex: 'time',
                 align: 'center',
@@ -34,7 +34,7 @@ Ext.define('ES.view.Layout.Menu.Menu', {
                 },
             },
             {
-                text: 'Address',
+                text: locale.address,
                 dataIndex: 'address',
                 flex: 1,
                 align: 'center',
@@ -56,7 +56,7 @@ Ext.define('ES.view.Layout.Menu.Menu', {
                 },
             },
             {
-                text: 'Direction',
+                text: locale.dir,
                 dataIndex: 'dir',
                 flex: 1,
                 align: 'right',

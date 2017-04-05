@@ -3,7 +3,8 @@ Ext.define('ES.view.Layout.Toolbar.Toolbar', {
     extend: 'Ext.toolbar.Toolbar',
     alias: 'widget.tb',
     requires: [
-        'Ext.layout.container.Fit'
+        'Ext.layout.container.Fit',
+        'ES.view.Layout.Locale.Translation'
     ],
     controller: 'toolbar',
     viewModel: 'toolbar',
@@ -20,6 +21,13 @@ Ext.define('ES.view.Layout.Toolbar.Toolbar', {
                 "margin-left": "-16px",
             }
         },
+
+         {xtype: 'tbspacer', width: 50},
+
+            {
+                xtype: 'translationbtn',
+
+            },
         "->", {
 
             xtype: 'image',
