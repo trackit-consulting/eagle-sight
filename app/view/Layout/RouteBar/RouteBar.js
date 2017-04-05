@@ -20,7 +20,7 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
         },
 
         items: [{
-                text: 'Arrival Time',
+                text: locale.at,
                 dataIndex: 'at',
                 height: 45,
                 align: 'center',
@@ -42,7 +42,7 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                 },
             },
             {
-                text: 'Page Countdown',
+                text: locale.countdown,
                 dataIndex: 'countdown',
                 height: 45,
                 align: 'center',
@@ -64,7 +64,7 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                 },
             },
             {
-                text: 'Travelled Distance (km)',
+                text: locale.dkm,
                 dataIndex: 'dkm',
                 height: 45,
                 align: 'center',
@@ -86,7 +86,7 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                 },
             },
             {
-                text: 'Speed (km/h)',
+                text: locale.vel,
                 dataIndex: 'vel',
                 height: 45,
                 align: 'center',
