@@ -1,10 +1,11 @@
 Ext.define('ES.view.Layout.Menu.Menu', {
 
     extend: 'Ext.grid.Panel',
-    alias: 'widget.menu',
+    alias: 'widget.timelineBar',
     controller: 'menu',
     viewModel: 'menu',
-    
+    autoScroll:true,
+
     title: 'Timeline',
     bodyStyle: 'background: #2b5876;',
     store: {
@@ -73,5 +74,4 @@ Ext.define('ES.view.Layout.Menu.Menu', {
             }
         ]
     }
-
 });

@@ -1,7 +1,7 @@
 Ext.define('ES.view.Layout.Toolbar.Toolbar', {
 
     extend: 'Ext.toolbar.Toolbar',
-    alias: 'widget.toolbar',
+    alias: 'widget.tb',
     requires: [
         'Ext.layout.container.Fit',
         'ES.view.Layout.Locale.Translation'
@@ -12,16 +12,14 @@ Ext.define('ES.view.Layout.Toolbar.Toolbar', {
     items: ["<-", {
 
             xtype: 'image',
-
+            alt: 'logo',
             id: 'logo',
             src: 'ext/resources/images/logo.png',
-            width: 110,
-            height: 40,
+            width: 90,
+            height: 35,
             style: {
                 "margin-left": "-16px",
-
             }
-
         },
 
          {xtype: 'tbspacer', width: 50},
@@ -33,10 +31,11 @@ Ext.define('ES.view.Layout.Toolbar.Toolbar', {
         "->", {
 
             xtype: 'image',
+            alt: 'project_logo',
             id: 'project_logo',
             src: 'ext/resources/images/project_logo.png',
-            width: 170,
-            height: 70,
+            width: 155,
+            height: 65,
             style: {
                 "margin-right": "20px"
 

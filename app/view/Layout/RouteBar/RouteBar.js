@@ -9,8 +9,8 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
     store: {
         type: 'routedata'
     },
-    viewConfig:{
-    markDirty:false
+    viewConfig: {
+        markDirty: false
     },
     columns: {
         border: false,
@@ -40,6 +40,11 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                     metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #4b5055";
                     return value;
                 },
+                listeners: {
+
+                    click: 'onItemClick'
+
+                }
             },
             {
                 text: locale.countdown,
@@ -62,6 +67,11 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                     metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #4b5055";
                     return value;
                 },
+                listeners: {
+
+                    click: 'onItemClick'
+
+                }
             },
             {
                 text: locale.dkm,
@@ -84,6 +94,11 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                     metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #4b5055";
                     return value;
                 },
+                listeners: {
+
+                    click: 'onItemClick'
+
+                }
             },
             {
                 text: locale.vel,
@@ -106,6 +121,11 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                     metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #4b5055";
                     return value;
                 },
+                listeners: {
+
+                    click: 'onItemClick'
+
+                }
             }
         ]
     }

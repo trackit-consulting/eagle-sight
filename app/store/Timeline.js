@@ -3,22 +3,24 @@ Ext.define('ES.store.Timeline', {
     alias: 'store.timeline',
     storeId: 'timeline',
     fields: [
-        'time', 'lat', 'lng', 'address', 'dir', 'vel'
+        'vid', 'time', 'lat', 'lng', 'address', 'dir', 'vel'
     ],
-    autoLoad: true,
+    pageSize: 500,
+
+    //autoLoad: true,
+    autoSync:true,
     sorters: [
             {
                 property: 'time',
                 direction: 'DESC'
             }
         ],
-    data: { 
-        //storeId: 'timeline',
-        query: [
-    ]},
+    data: {
+        query: []},
 
     proxy: {
-        type: 'memory',
+        type: 'sessionstorage',
+        id: 'sessionTimeline',
         reader: {
             type: 'json',
             rootProperty: 'query'
