@@ -124,7 +124,7 @@ Ext.define('ES.view.Layout.Map.Map', {
         var infowindow = new google.maps.InfoWindow();
         var marker = new google.maps.Marker({
             position: pos,
-            title: 'My map',
+            title: 'Info',
             map: this.gmap
         });
 

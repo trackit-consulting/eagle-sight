@@ -19,7 +19,10 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                     mapready: function(gmappanel) {
 
-                        //http://localhost:1841/?token=eyJsbmciOi04LjY1Njg3MjYsImxhdCI6NDEuMTYyODYzNCwidmlkIjoxNjAwMDUsImVwb2NoIjoxNDkwODAyMDMxMDAwfQ==
+                        //http://localhost:1841/?token=eyAibG5nIjogLTguNjU2ODcyNiwgImxhdCI6IDQxLjE2Mjg2MzQsICJ2aWQiOiAxMzE2NTMsICJlcG9jaCI6IDE0OTIwMTI5NTUwMDAgfQ==
+                        //{"lng": -8.6568726,"lat": 41.1628634,"vid": 160005,"epoch": 1490802031000};
+                        //https://www.base64decode.org/ -> Dás encode no json com todos os ficheiros necessários
+                        //https://www.epochconverter.com/ -> Geras a data e hora e modificas no json
 
                         //Calling timeline store
 
@@ -52,7 +55,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                         if (window.location.search === '' || window.location.search.split("?")[1].substr(5, 1) != '=' || window.location.search.split("?")[1].split("=")[0] != 'token' || window.location.search.split("?")[1].split("=")[1] == '') {
                             onError = true;
-                            Ext.Msg.alert('Alert!', 'Invalid Token');
+                            Ext.Msg.alert(locale.alert, locale.tokenerror);
                         } else {
                             onError = false;
                         }
@@ -131,8 +134,8 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                 var ctdHours = parseInt((ctdMillis / (1000 * 60 * 60)) % 24);
 
                                 if (getTimeNow > getEpochEnding) {
-
-                                    Ext.Msg.alert('Alert!', 'We are sorry, but this link already expired.');
+                                    console.log(locale.alert);
+                                    Ext.Msg.alert(locale.alert, 'We are sorry, but this link already expired.');
                                     ctdSeconds = 0;
                                     ctdMinutes = 0;
                                     ctdHours = 0;
@@ -249,7 +252,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                                             var marker = new google.maps.Marker({
                                                 position: pos,
-                                                title: 'My map',
+                                                title: 'Destination',
                                                 map: gmappanel.gmap
                                             });
 
@@ -412,9 +415,6 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                         };
 
                                         }
-
-                                        //Show the vehicle's direction
-
 
                                         //Polyline styles
 

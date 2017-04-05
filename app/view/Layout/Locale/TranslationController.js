@@ -6,17 +6,18 @@ Ext.define('ES.view.Layout.Locale.TranslationController', {
         var menu = this.getView(); 
         menu.setIconCls(item.iconCls); 
         menu.setText(item.text); 
+        console.log("teste");
         localStorage.setItem("user-lang", item.iconCls); 
-        window.location.reload(); 
+        location.reload();
     },
 
     init: function() {
-            var lang = localStorage ? (localStorage.getItem('user-lang') ||'en' ) : 'en',
+            var lang = localStorage ? (localStorage.getItem('user-lang') || 'en' ) : 'en',
                 button = this.getView();
 
             button.setIconCls(lang);
             if (lang == 'en') {
-                button.setText('English');
+              button.setText('English');
             }else{
               button.setText('Português'); 
             }

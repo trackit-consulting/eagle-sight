@@ -8,5 +8,6 @@ locale = {
 		vel:"Velocidade (km/h)",
         dkm:"Distância precorrida (km)",
         timeline:"Cronologia",
-		countdown:"TTL"
+		countdown:"TTL",
+		timeline:"Linha do tempo"
 };
