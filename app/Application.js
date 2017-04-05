@@ -1,13 +1,16 @@
-function loadLocale(){
+function loadLocale() {
 
     var lang = localStorage ? (localStorage.getItem('user-lang') || 'en') : 'en',
         file = Ext.util.Format.format("ext/resources/translations/{0}.js", lang);
-    Ext.Loader.loadScript({url: file, onError: function(){
-        alert('Error loading locale file. Please contact system administrator.');
-    }});
+    Ext.Loader.loadScript({
+        url: file,
+        onError: function() {
+            alert('Error loading locale file. Please contact system administrator.');
+        }
+    });
 }
 
-loadLocale(); 
+loadLocale();
 
 
 /**
@@ -17,41 +20,43 @@ loadLocale();
  */
 Ext.define('ES.Application', {
     extend: 'Ext.app.Application',
-    
+
     name: 'ES',
 
     stores: [
         // TODO: add global / shared stores here
     ],
-    
-    launch: function () {
+
+    launch: function() {
         // TODO - Launch the application
-      Ext.tip.QuickTipManager.init();
+        Ext.tip.QuickTipManager.init();
 
-    console.log('done');
-},
+        console.log('done');
+    },
 
-    init: function () {
-    var me = this; 
-    me.splashscreen = Ext.getBody().mask( 
-        'Loading your application, please stand by', 'splashscreen'
-    );
+    init: function() {
+        var me = this;
+        me.splashscreen = Ext.getBody().mask(
+            "A carregar a página, por favor aguarde.", 'splashscreen'
+        );
 
-    var task = new Ext.util.DelayedTask(function() {
 
-        // fade out the body mask
-        me.splashscreen .fadeOut({
-            duration: 500,
-            remove: true
+
+        var task = new Ext.util.DelayedTask(function() {
+
+            // fade out the body mask
+            me.splashscreen.fadeOut({
+                duration: 500,
+                remove: true
+            });
         });
-   });
 
-    task.delay(1000);
-},
+        task.delay(1000);
+    },
 
-    onAppUpdate: function () {
+    onAppUpdate: function() {
         Ext.Msg.confirm('Application Update', 'This application has an update, reload?',
-            function (choice) {
+            function(choice) {
                 if (choice === 'yes') {
                     window.location.reload();
                 }

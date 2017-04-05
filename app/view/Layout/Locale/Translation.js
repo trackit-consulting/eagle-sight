@@ -11,6 +11,9 @@ Ext.define('ES.view.Layout.Locale.Translation', {
         transitionType: 'slide',
         delay: 0.2, // default
         autoWidth: true, // default
+        bodyStyle: {
+            "background-color": "rgba(255,255,255,0.6)"
+        },
         transitionDuration: 0.3, // default
         animate: true, 
         items: [
@@ -18,6 +21,7 @@ Ext.define('ES.view.Layout.Locale.Translation', {
                 xtype: 'menuitem',
                 iconCls: 'en',
                 text: 'English',
+                height:30,
                 listeners: {
                     click: "onMenuItemClick"
                 }
@@ -26,6 +30,7 @@ Ext.define('ES.view.Layout.Locale.Translation', {
                 xtype: 'menuitem',
                 iconCls: 'pt_PT',
                 text: 'Português',
+                 height:30,
                 listeners: {
                     click: "onMenuItemClick"
                 }

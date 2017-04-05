@@ -7,5 +7,7 @@ locale = {
 		vel:"Speed (km/h)",
         dkm:"Travelled Distance (km)",
 		timeline:"TimeLine",
-		countdown:"TTL"
+		countdown:"TTL",
+		timeline:"Timeline",
+		splashtxt: "Loading your application, please stand by"
 	};
