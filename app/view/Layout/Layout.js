@@ -19,9 +19,10 @@ Ext.define('ES.view.Layout.Layout', {
     items: [{
             xtype: 'map',
             region: 'center',
+            plugins: 'responsive'
         },
         {
-            xtype: 'toolbar',
+            xtype: 'tb',
             region: 'north',
             plugins: 'responsive',
             height: 80,
@@ -30,21 +31,59 @@ Ext.define('ES.view.Layout.Layout', {
                 'text-align': 'center',
                 'vertical-align': 'middle'
             },
+            plugins: 'responsive'
 
         },
         {
             region: 'west',
             layout: 'fit',
-            xtype: 'menu',
+            xtype: 'timelineBar',
             title: 'Timeline',
             width: 320,
             collapsible: true,
             height: 500,
             style: {
                 background: 'linear-gradient(to left, #385871 , #507ea3)',
-            }
+            },
+            
+            listeners: {
+                afterrender: {
+                    fn: function() {
+                        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                            this.collapse();
 
-        }
+                        } else {
+
+                            this.expand();
+                        }
+                    }
+
+                }
+            },
+            plugins: 'responsive',
+            dockedItems: [{
+
+                xtype: 'panel',
+                height: 33,
+                width: 320,
+                preventHeader: true,
+                dock: 'bottom',
+                bodyStyle: {
+                    "background-color": "#172d35",
+                    "color": "white",
+                    "padding": "8px",
+                    "text-align": "center",
+                    "letter-spacing": "1px",
+                    "font-size": "11px"
+                },
+
+                html: '<a style="text-decoration: none; color:white" target="_blank" href="http://www.trackit.pt/en/about-us/">About Us | </a><a target="_blank" style="text-decoration: none; color:white" href="http://www.trackit.pt/en/trackit-news/">News</a><a style="text-decoration: none; color:white" target="_blank" href="http://www.trackit.pt/en/contacts/"> | Contacts</a>'
+
+            }]
+
+        },
+
+
     ]
 
 

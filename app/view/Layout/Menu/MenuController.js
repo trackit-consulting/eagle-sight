@@ -1,10 +1,12 @@
 Ext.define('ES.view.Layout.Menu.MenuController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.menu',
-
     onItemClick: function(grid, cellElement, rowIndex, cellIndex) {
         var gridstore = grid.getStore();
-
+        
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        grid.up().collapse();
+        }
         //Calling route information store
 
         var rowdata = gridstore.data.items[rowIndex];
@@ -26,7 +28,11 @@ Ext.define('ES.view.Layout.Menu.MenuController', {
 
                     routeStore.each(function(rec) {
                         if (rec.internalId == 2) {
-                            rec.set("vel", vel);
+                            if (parseInt(vel) == 0) {
+                                rec.set("vel", "PARKED");
+                            } else {
+                                rec.set("vel", vel);
+                            }
                         }
                     });
 

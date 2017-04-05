@@ -110,13 +110,14 @@ Ext.define('ES.view.Layout.Map.Map', {
             {}
         ]
     },
-    dockedItems: [{
 
-        xtype: 'routebar',
-        preventHeader: true,
-        dock: 'bottom'
-
-    }],
+    dockedItems: [
+        {
+            xtype: 'routebar',
+            preventHeader: true,
+            dock: 'bottom'
+        }
+    ],
 
     addInfoWindow: function(string, lat, lng) {
         var pos = new google.maps.LatLng(lat, lng);
