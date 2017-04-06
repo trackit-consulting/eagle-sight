@@ -29,7 +29,7 @@ Ext.define('ES.view.Layout.Menu.MenuController', {
                     routeStore.each(function(rec) {
                         if (rec.internalId == 2) {
                             if (parseInt(vel) == 0) {
-                                rec.set("vel", "PARKED");
+                                rec.set("vel", locale.parked);
                             } else {
                                 rec.set("vel", vel);
                             }

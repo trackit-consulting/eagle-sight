@@ -36,6 +36,24 @@ Ext.define('ES.view.Layout.Locale.Translation', {
                 listeners: {
                     click: "onMenuItemClick"
                 }
+            },
+            {
+                xtype:'menuitem',
+                iconCls:'es',
+                text:'Español',
+                height:30,
+                listeners: {
+                    click:"onMenuItemClick"
+                }
+            },
+            {
+                xtype:'menuitem',
+                iconCls:'fr',
+                text:'Français',
+                height:30,
+                listeners: {
+                    click:"onMenuItemClick"
+                }
             }
         ]
     })

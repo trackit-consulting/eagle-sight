@@ -311,7 +311,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                                             rec.set("dkm", (response.routes[0].legs[0].distance.value) / 1000);
 
                                                             if (parseInt(vel) == 0) {
-                                                                rec.set("vel", "PARKED");
+                                                                rec.set("vel", locale.parked);
                                                             } else {
                                                                 rec.set("vel", vel);
                                                             }
