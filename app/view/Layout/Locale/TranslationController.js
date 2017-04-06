@@ -18,8 +18,12 @@ Ext.define('ES.view.Layout.Locale.TranslationController', {
             button.setIconCls(lang);
             if (lang == 'en') {
               button.setText('English');
-            }else{
+            }else if (lang == 'pt_PT'){
               button.setText('Português'); 
+            }else if (lang == 'es'){
+                button.setText('Español');
+            }else{
+                button.setText('Français');
             }
     }
 });

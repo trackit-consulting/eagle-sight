@@ -8,7 +8,6 @@ locale = {
         dkm:"Travelled Distance (km)",
 		timeline:"TimeLine",
 		countdown:"TTL",
-		timeline:"Timeline",
 		splashtxt: "Loading your application, please stand by",
 		alert:"Alert!",
 		tokenerror:"Invalid Token.",
@@ -17,4 +16,5 @@ locale = {
 		about:"About Us",
 		news: "News",
 		contacts:"Contacts",
+		parked:"PARKED",
 	};

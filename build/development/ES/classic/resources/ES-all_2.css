@@ -1,3 +1,11 @@
+/* C:/Users/manuel/Documents/GitHub/eagle-sight/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1886 */
+.x-tab-default-bottom {
+    margin: 0 4px 0 0;
+}
+/* C:/Users/manuel/Documents/GitHub/eagle-sight/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1890 */
+.x-tab-default-bottom.x-rtl {
+    margin: 0 0 0 4px;
+}
 /* C:/Users/manuel/Documents/GitHub/eagle-sight/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1895 */
 .x-tab-default-bottom.x-tab-rotate-left {
     margin: 0 0 0 4px;

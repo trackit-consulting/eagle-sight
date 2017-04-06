@@ -17,4 +17,5 @@ locale = {
 		about:"Sobre Nós",
 		news: "Novidades",
 		contacts:"Contactos",
+		parked:"PARADO",
 };

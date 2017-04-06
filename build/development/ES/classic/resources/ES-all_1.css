@@ -3,8 +3,16 @@
     background-image: url('/ext/resources/flags/pt.png') !important;
 }
 /* C:/Users/manuel/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:5 */
+.es {
+    background-image: url('/ext/resources/flags/es.png') !important;
+}
+/* C:/Users/manuel/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:9 */
 .en {
     background-image: url('/ext/resources/flags/england.png') !important;
+}
+/* C:/Users/manuel/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:13 */
+.fr {
+    background-image: url('/ext/resources/flags/fr.png') !important;
 }
 /* C:/Users/manuel/Documents/GitHub/eagle-sight/ext/packages/core/sass/src/util/SizeMonitor.scss:5 */
 .x-size-monitored {
@@ -16233,12 +16241,4 @@ div.x-border-layout-ct {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-}
-/* C:/Users/manuel/Documents/GitHub/eagle-sight/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1886 */
-.x-tab-default-bottom {
-    margin: 0 4px 0 0;
-}
-/* C:/Users/manuel/Documents/GitHub/eagle-sight/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1890 */
-.x-tab-default-bottom.x-rtl {
-    margin: 0 0 0 4px;
 }
