@@ -135,7 +135,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                                 if (getTimeNow > getEpochEnding) {
                                     console.log(locale.alert);
-                                    Ext.Msg.alert(locale.alert, 'We are sorry, but this link already expired.');
+                                    Ext.Msg.alert(locale.alert, locale.ttl);
                                     ctdSeconds = 0;
                                     ctdMinutes = 0;
                                     ctdHours = 0;
