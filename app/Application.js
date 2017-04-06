@@ -5,7 +5,7 @@ function loadLocale() {
     Ext.Loader.loadScript({
         url: file,
         onError: function() {
-            alert('Error loading locale file. Please contact system administrator.');
+            alert(locale.langerror);
         }
     });
 }
@@ -37,7 +37,7 @@ Ext.define('ES.Application', {
     init: function() {
         var me = this;
         me.splashscreen = Ext.getBody().mask(
-            "A carregar a página, por favor aguarde.", 'splashscreen'
+            locale.splashtxt, 'splashscreen'
         );
 
 
@@ -51,7 +51,7 @@ Ext.define('ES.Application', {
             });
         });
 
-        task.delay(1000);
+        task.delay(5000);
     },
 
     onAppUpdate: function() {

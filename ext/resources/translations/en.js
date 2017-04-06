@@ -9,5 +9,12 @@ locale = {
 		timeline:"TimeLine",
 		countdown:"TTL",
 		timeline:"Timeline",
-		splashtxt: "Loading your application, please stand by"
+		splashtxt: "Loading your application, please stand by",
+		alert:"Alert!",
+		tokenerror:"Invalid Token.",
+		langerror:"Error loading locale file. Please contact system administrator.",
+		ttl:"We are sorry, but this link already expired.",
+		about:"About Us",
+		news: "News",
+		contacts:"Contacts",
 	};
