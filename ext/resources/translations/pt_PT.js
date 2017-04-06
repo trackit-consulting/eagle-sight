@@ -18,4 +18,5 @@ locale = {
 		news: "Novidades",
 		contacts:"Contactos",
 		parked:"PARADO",
+		value: "Valor: "
 };

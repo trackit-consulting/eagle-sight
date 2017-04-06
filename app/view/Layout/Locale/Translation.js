@@ -21,15 +21,17 @@ Ext.define('ES.view.Layout.Locale.Translation', {
                 xtype: 'menuitem',
                 iconCls: 'en',
                 text: 'English',
+                id: 'enBtn',
                 height:30,
                 listeners: {
-                    click: "onMenuItemClick"
-                }
+                    click: "onMenuItemClick",
+                },
             },
             {
                 xtype: 'menuitem',
                 iconCls: 'pt_PT',
                 text: 'Português',
+                id: 'ptBtn',
                  height:30,
                 listeners: {
                     click: "onMenuItemClick"

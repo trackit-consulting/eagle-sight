@@ -261,9 +261,12 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                             });
                                             infoWindow.open(map, marker);
 
+
+
+
                                         }
 
-                                    }, 500);
+                                    }, 2000);
 
                                     //Receiving messages from the Websocket
 
