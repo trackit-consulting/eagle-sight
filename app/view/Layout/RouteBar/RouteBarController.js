@@ -6,7 +6,7 @@ Ext.define('ES.view.Layout.RouteBar.RouteBarController', {
 
         Ext.toast({
         timeout: 5000,
-        html: "Value: " +  td.innerText,
+        html: locale.value +  td.innerText,
         width: 150,
         height: 20
         });
