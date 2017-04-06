@@ -1,3 +1,5 @@
+console.log(locale.about);
+
 Ext.define('ES.view.Layout.Layout', {
 
     extend: 'Ext.panel.Panel',
