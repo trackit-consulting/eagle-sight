@@ -6,8 +6,6 @@ Ext.define('ES.store.Timeline', {
         'vid', 'time', 'lat', 'lng', 'address', 'dir', 'vel'
     ],
     pageSize: 500,
-
-    //autoLoad: true,
     autoSync:true,
     sorters: [
             {

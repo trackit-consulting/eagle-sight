@@ -5,6 +5,11 @@ Ext.define('ES.view.Layout.Map.Map', {
     requires: [
         'Ext.layout.container.Fit'
     ],
+    plugins: {
+        ptype: 'bufferedrenderer',
+        trailingBufferZone: 20,  // Keep 20 rows rendered in the table behind scroll
+        leadingBufferZone: 50   // Keep 50 rows rendered in the table ahead of scroll
+    },
     store: {
         type: 'timeline'
     },

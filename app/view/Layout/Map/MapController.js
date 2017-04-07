@@ -125,7 +125,9 @@ Ext.define('ES.view.Layout.Map.MapController', {
                             var updateTime = setInterval(function() {
 
                                 var getTimeNow = new Date();
-                                var ctdMillis = new Date(Math.abs(getEpochEnding - getTimeNow));
+                                var timeZone = getTimeNow.getTimezoneOffset();
+                                //var ctdMillis = new Date(Math.abs(getEpochEnding - getTimeNow));
+                                var ctdMillis = new Date(Math.abs(getEpochEnding - (getTimeNow - (timeZone * 60000))));
 
                                 //Converting the epoch milliseconds to hours/minutes/seconds
 
@@ -227,6 +229,8 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                             if (client.readyState === client.OPEN) {
                                                 var number = Math.round(Math.random() * 0xFFFFFF);
                                                 client.send(number.toString());
+
+                                                console.log((timelineStore.count()) - 1);
                                                 setTimeout(askLocation, 14000);
                                             }
                                         }
@@ -353,6 +357,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                                             timelineStore.add(specifyInfo);
                                             timelineStore.save();
+                                            
                                             drawPolyline();
                                             var circle = new google.maps.Circle({
                                                 center: polylineData,
@@ -397,7 +402,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                                     function drawPolyline(vel) {
 
-                                        var lineSymbol;
+                                    var lineSymbol;
 
                                         if (countVel > 2 && vel <= 0) {
 
