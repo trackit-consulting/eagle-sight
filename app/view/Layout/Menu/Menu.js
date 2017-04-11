@@ -4,10 +4,12 @@ Ext.define('ES.view.Layout.Menu.Menu', {
     alias: 'widget.timelineBar',
     controller: 'menu',
     viewModel: 'menu',
+    overflowY: 'auto',
     id: 'timelineBar',
     autoScroll:true,
     title: 'Timeline',
     bodyStyle: 'background: #2b5876;',
+    autoHeight:true,
     store: {
         type: 'timeline'
     },

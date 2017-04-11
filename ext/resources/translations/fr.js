@@ -1,4 +1,4 @@
-//traduçoes fr
+//translations in fr
 
 locale = {
 		time:"Temps",
@@ -18,4 +18,8 @@ locale = {
 		news: "Information",
 		contacts:"Contacts",
 		parked:"STATIONNER",
+		value:"Valeur",
+		show:"Arriver",
 	};
+
+	

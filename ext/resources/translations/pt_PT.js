@@ -1,4 +1,4 @@
-//traduções pt_PT
+//translations in pt_PT
 
 locale = {
 		time: "Horas",
@@ -18,5 +18,6 @@ locale = {
 		news: "Novidades",
 		contacts:"Contactos",
 		parked:"PARADO",
-		value: "Valor: "
+		value: "Valor: ",
+		show:"Mostrar",
 };

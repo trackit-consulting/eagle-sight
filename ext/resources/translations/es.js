@@ -1,4 +1,4 @@
-//traduçoes espanhol
+//translations in es
 
 locale = {
 		time: "Hora",
@@ -18,4 +18,6 @@ locale = {
 		news: "Informaciones",
 		contacts:"Contactos",
         parked:"ESTACIONADO",
+		value:"Valor: ",
+		show:"Mostrar",
 	};
