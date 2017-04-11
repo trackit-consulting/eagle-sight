@@ -5,14 +5,6 @@ Ext.define('ES.view.Layout.Map.Map', {
     requires: [
         'Ext.layout.container.Fit'
     ],
-    plugins: {
-        ptype: 'bufferedrenderer',
-        trailingBufferZone: 20,  // Keep 20 rows rendered in the table behind scroll
-        leadingBufferZone: 50   // Keep 50 rows rendered in the table ahead of scroll
-    },
-    store: {
-        type: 'timeline'
-    },
     layout: 'fit',
     controller: 'map',
     viewModel: 'map',
@@ -125,6 +117,9 @@ Ext.define('ES.view.Layout.Map.Map', {
     ],
 
     addInfoWindow: function(string, lat, lng) {
+
+        //Show Info window
+
         var pos = new google.maps.LatLng(lat, lng);
         var infowindow = new google.maps.InfoWindow();
         var marker = new google.maps.Marker({

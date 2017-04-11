@@ -72,17 +72,18 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                             var dec = window.atob(token);
 
+                            console.log(dec);
                             var isJson;
 
                             //Check if the JSON received on parameters is valid
-
+ 
                             try {
                                 var retreiveObj = JSON.parse(dec);
                                 isJson = true;
                             } catch (e) {
                                 isJson = false;
                             }
-                            
+
                             var getLng, getLat, getVhc, getCtd;
 
                             //Check if all json properties are right
@@ -103,7 +104,6 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                 getVhc = 0;
                                 getCtd = 0;
                             }
-
 
                             //Save parameters data (route destiny, vehicle id, epoch)
 
@@ -126,17 +126,15 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                                 var getTimeNow = new Date();
                                 var timeZone = getTimeNow.getTimezoneOffset();
-                                //var ctdMillis = new Date(Math.abs(getEpochEnding - getTimeNow));
                                 var ctdMillis = new Date(Math.abs(getEpochEnding - (getTimeNow - (timeZone * 60000))));
 
                                 //Converting the epoch milliseconds to hours/minutes/seconds
 
                                 var ctdSeconds = parseInt((ctdMillis / 1000) % 60);
                                 var ctdMinutes = parseInt((ctdMillis / (1000 * 60)) % 60);
-                                var ctdHours = parseInt((ctdMillis / (1000 * 60 * 60)) % 24);
+                                var ctdHours = parseInt((ctdMillis / (1000 * 60 * 60)));
 
-                                if (getTimeNow > getEpochEnding) {
-                                    console.log(locale.alert);
+                                if ((getTimeNow - (timeZone * 60000)) > getEpochEnding) {
                                     Ext.Msg.alert(locale.alert, locale.ttl);
                                     ctdSeconds = 0;
                                     ctdMinutes = 0;
@@ -146,13 +144,15 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                     clearInterval(updateTime);
                                 }
 
+
+
                                 //Change the route information row
 
                                 routeStore.each(function(rec) {
 
                                     if (rec.internalId == 1) {
 
-                                        rec.set("countdown", ("0" + ctdHours).substr(-2) + ":" + ("0" + ctdMinutes).substr(-2) + ":" + ("0" + ctdSeconds).substr(-2));
+                                        rec.set("countdown", ctdHours + ":" + ("0" + ctdMinutes).substr(-2) + ":" + ("0" + ctdSeconds).substr(-2));
 
                                     }
 
@@ -170,7 +170,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                                     //Start to listen the Websocket
 
-                                    var wsUri = "ws://192.168.1.124:8089/";
+                                    var wsUri = "ws://localhost:8089/";
 
                                     //Polyline coordinates
 
@@ -179,7 +179,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                     //Load all timeline store data
 
                                     timelineStore.load(
-                                        function(records, op, success) { 
+                                        function(records, op, success) {
 
                                             var list, i;
                                             var sameVhc = true;
@@ -195,8 +195,6 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                                         lat: list.lat,
                                                         lng: list.lng
                                                     };
-
-                                                    console.log(i + "-" + reloadData);
                                                     flightPathCoordinates.push(reloadData);
                                                 }
                                             }
@@ -230,7 +228,27 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                                 var number = Math.round(Math.random() * 0xFFFFFF);
                                                 client.send(number.toString());
 
-                                                console.log((timelineStore.count()) - 1);
+                                                var gridStore = Ext.getCmp('timelineBar').getStore();
+
+                                                timelineStore.each(function(rec) {
+
+                                                    var time = rec.data.time;
+                                                    var gcTime = new Date();
+                                                    var gcTimeStr = gcTime.getHours() + ":" + gcTime.getMinutes() + ":" + gcTime.getSeconds();
+
+                                                    console.log(hmsToSceconds(time));
+                                                    console.log(hmsToSceconds(gcTimeStr));
+                                                    console.log((hmsToSceconds(gcTimeStr) - hmsToSceconds(time)));
+                                                    console.log("<br>");
+
+
+                                                    if ((hmsToSceconds(gcTimeStr) - hmsToSceconds(time)) > 60) {
+                                                        rec.set("hidden", true);
+                                                    }
+
+                                                });
+
+
                                                 setTimeout(askLocation, 14000);
                                             }
                                         }
@@ -264,9 +282,6 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                                 content: "Destination Point"
                                             });
                                             infoWindow.open(map, marker);
-
-
-
 
                                         }
 
@@ -342,7 +357,8 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                                 lng: lon1,
                                                 address: "Show Up",
                                                 dir: degToCompass(parseFloat(JSON.parse(e.data).hdg)),
-                                                vel: vel
+                                                vel: vel,
+                                                hidden: false
                                             };
 
                                             //Degrees to compass (vehicle direction)
@@ -357,7 +373,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                                             timelineStore.add(specifyInfo);
                                             timelineStore.save();
-                                            
+
                                             drawPolyline();
                                             var circle = new google.maps.Circle({
                                                 center: polylineData,
@@ -402,25 +418,25 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                                     function drawPolyline(vel) {
 
-                                    var lineSymbol;
+                                        var lineSymbol;
 
                                         if (countVel > 2 && vel <= 0) {
 
-                                        lineSymbol = {
-                                            path: google.maps.SymbolPath.CIRCLE,
-                                            strokeColor: '#841346',
-                                            scale: 8,
-                                            strokeWeight:2,
-                                            strokeColor:"#B40404"
-                                        };
+                                            lineSymbol = {
+                                                path: google.maps.SymbolPath.CIRCLE,
+                                                strokeColor: '#841346',
+                                                scale: 8,
+                                                strokeWeight: 2,
+                                                strokeColor: "#B40404"
+                                            };
 
 
-                                    }else{
-                                        
-                                       lineSymbol = {
-                                            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-                                            strokeColor: '#841346',
-                                        };
+                                        } else {
+
+                                            lineSymbol = {
+                                                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                                                strokeColor: '#841346',
+                                            };
 
                                         }
 
@@ -472,6 +488,20 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                 }
                             }, 1000);
 
+                            //Hours, minutes and seconds to seconds
+
+                            function hmsToSceconds(str) {
+                                var p = str.split(':'),
+                                    s = 0,
+                                    m = 1;
+
+                                while (p.length > 0) {
+                                    s += m * parseInt(p.pop(), 10);
+                                    m *= 60;
+                                }
+
+                                return s;
+                            }
                             //Finished
                         }
                     }

@@ -6,7 +6,6 @@ Ext.define('ES.view.Layout.Locale.TranslationController', {
         var menu = this.getView();
         menu.setIconCls(item.iconCls);
         menu.setText(item.text);
-        console.log("teste");
         localStorage.setItem("user-lang", item.iconCls);
         location.reload();
     },
