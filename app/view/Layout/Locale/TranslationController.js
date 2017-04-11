@@ -2,6 +2,7 @@ Ext.define('ES.view.Layout.Locale.TranslationController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.translation',
 
+
     onMenuItemClick: function(item, e, options){
         var menu = this.getView(); 
         menu.setIconCls(item.iconCls); 
@@ -13,8 +14,6 @@ Ext.define('ES.view.Layout.Locale.TranslationController', {
      //look for language preferences saved at LocalStore
 
     init: function() {
-            var lang = localStorage ? (localStorage.getItem('user-lang') || 'en' ) : 'en',
-                button = this.getView();
 
     //when the button is clicked it is possible to change the language in which the page is
 
@@ -27,6 +26,31 @@ Ext.define('ES.view.Layout.Locale.TranslationController', {
                 button.setText('Español');
             }else{
                 button.setText('Français');
+        var isMobile;
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            isMobile = true;
+        } else {
+            isMobile = false;
+        }
+        var lang = localStorage ? (localStorage.getItem('user-lang') || 'en') : 'en',
+            button = this.getView();
+        button.setIconCls(lang);
+        if (lang == 'en') {
+            setText('English');
+        } else if (lang == 'pt_PT') {
+            setText('Português');
+        } else if (lang == 'es') {
+            setText('Español');
+        } else {
+            setText('Français');
+        }
+
+        function setText(text) {
+            if (isMobile) {
+                button.setText('');
+            } else {
+                button.setText(text);
             }
+        }
     }
 });

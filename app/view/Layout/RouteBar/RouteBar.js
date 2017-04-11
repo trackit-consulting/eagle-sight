@@ -16,7 +16,6 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
         border: false,
         defaults: {
             hoverCls: ''
-
         },
 
         items: [{

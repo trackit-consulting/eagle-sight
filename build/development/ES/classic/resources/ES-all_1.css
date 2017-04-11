@@ -2,19 +2,20 @@
 .pt_PT {
     background-image: url('/ext/resources/flags/pt.png') !important;
 }
-/* C:/Users/manuel/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:5 */
+/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:5 */
 .es {
     background-image: url('/ext/resources/flags/es.png') !important;
 }
-/* C:/Users/manuel/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:9 */
+/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:9 */
 .en {
     background-image: url('/ext/resources/flags/england.png') !important;
 }
-/* C:/Users/manuel/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:13 */
+/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:13 */
 .fr {
     background-image: url('/ext/resources/flags/fr.png') !important;
 }
 /* C:/Users/manuel/Documents/GitHub/eagle-sight/ext/packages/core/sass/src/util/SizeMonitor.scss:5 */
+/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/ext/packages/core/sass/src/util/SizeMonitor.scss:5 */
 .x-size-monitored {
     /**
  * @class Ext.util.SizeMonitor
