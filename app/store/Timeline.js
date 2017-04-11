@@ -3,11 +3,9 @@ Ext.define('ES.store.Timeline', {
     alias: 'store.timeline',
     storeId: 'timeline',
     fields: [
-        'vid', 'time', 'lat', 'lng', 'address', 'dir', 'vel'
+        'vid', 'time', 'lat', 'lng', 'address', 'dir', 'vel', 'hidden'
     ],
     pageSize: 500,
-
-    //autoLoad: true,
     autoSync:true,
     sorters: [
             {
@@ -25,5 +23,6 @@ Ext.define('ES.store.Timeline', {
             type: 'json',
             rootProperty: 'query'
         }
-    }
+    },
+    filters: [{ property: 'hidden', value: false }]
 });

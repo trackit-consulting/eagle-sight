@@ -4,13 +4,14 @@ Ext.define('ES.view.Layout.Menu.Menu', {
     alias: 'widget.timelineBar',
     controller: 'menu',
     viewModel: 'menu',
+    id: 'timelineBar',
     autoScroll:true,
-
     title: 'Timeline',
     bodyStyle: 'background: #2b5876;',
     store: {
         type: 'timeline'
     },
+    
     columns: {
         border: false,
         defaults: {
@@ -30,7 +31,7 @@ Ext.define('ES.view.Layout.Menu.Menu', {
                 renderer: function(value, metaData) {
                     metaData.style = "background-color:#2b5876; color: white; outline: 1px solid white; padding:20px;";
                     return value;
-                },
+                }
             },
             {
                 text: locale.address,
@@ -52,7 +53,7 @@ Ext.define('ES.view.Layout.Menu.Menu', {
 
                     click: 'onItemClick'
 
-                },
+                }
             },
             {
                 text: locale.dir,
@@ -68,7 +69,7 @@ Ext.define('ES.view.Layout.Menu.Menu', {
                 renderer: function(value, metaData) {
                     metaData.style = "background-color:#2b5876; color: white; outline: 1px solid white; padding: 20px;";
                     return value;
-                },
+                }
 
             }
         ]

@@ -4,9 +4,12 @@ Ext.define('ES.view.Layout.Menu.MenuController', {
     onItemClick: function(grid, cellElement, rowIndex, cellIndex) {
         var gridstore = grid.getStore();
         
+        //Check if user is accessing the page on a mobile iPhone
+
         if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         grid.up().collapse();
-        }
+    }
+    
         //Calling route information store
 
         var rowdata = gridstore.data.items[rowIndex];
@@ -26,6 +29,7 @@ Ext.define('ES.view.Layout.Menu.MenuController', {
                     var newInformation = Ext.ComponentQuery.query('map')[0];
                     newInformation.addInfoWindow(results[0].formatted_address, lat, lng);
 
+                    //Check if car is parked or not
                     routeStore.each(function(rec) {
                         if (rec.internalId == 2) {
                             if (parseInt(vel) == 0) {

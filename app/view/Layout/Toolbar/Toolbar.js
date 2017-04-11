@@ -22,7 +22,7 @@ Ext.define('ES.view.Layout.Toolbar.Toolbar', {
             }
         },
 
-         {xtype: 'tbspacer', width:10},
+         {xtype: 'tbspacer', width:2},
 
             {
                 xtype: 'translationbtn',

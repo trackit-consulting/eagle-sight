@@ -9,12 +9,12 @@ Ext.define('ES.view.Layout.Locale.Translation', {
     viewModel: 'translation',
     menu: new Ext.menu.Menu({
         transitionType: 'slide',
-        delay: 0.2, // default
-        autoWidth: true, // default
+        delay: 0.2,
+        autoWidth: true, 
         bodyStyle: {
             "background-color": "rgba(255,255,255,0.6)"
         },
-        transitionDuration: 0.3, // default
+        transitionDuration: 0.3,
         animate: true, 
         items: [
             {
@@ -25,7 +25,7 @@ Ext.define('ES.view.Layout.Locale.Translation', {
                 height:30,
                 listeners: {
                     click: "onMenuItemClick",
-                },
+                }
             },
             {
                 xtype: 'menuitem',
