@@ -17,15 +17,6 @@ Ext.define('ES.view.Layout.Locale.TranslationController', {
 
     //when the button is clicked it is possible to change the language in which the page is
 
-            button.setIconCls(lang);
-            if (lang == 'en') {
-              button.setText('English');
-            }else if (lang == 'pt_PT'){
-              button.setText('Português'); 
-            }else if (lang == 'es'){
-                button.setText('Español');
-            }else{
-                button.setText('Français');
         var isMobile;
         if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
             isMobile = true;
