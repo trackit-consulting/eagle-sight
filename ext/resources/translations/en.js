@@ -1,4 +1,4 @@
-//traduçoes en sdasd
+//translations in en
 locale = {
 		time: "Time",
 		address: "Address",
@@ -17,5 +17,6 @@ locale = {
 		news: "News",
 		contacts:"Contacts",
 		parked:"PARKED",
-		value: "Value: "
+		value: "Value: ",
+		show:"Show Up",
 	};

@@ -336,7 +336,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                                 time: hour + ":" + minutes + ":" + seconds,
                                                 lat: lat1,
                                                 lng: lon1,
-                                                address: "Show Up",
+                                                address: locale.show,
                                                 dir: degToCompass(parseFloat(JSON.parse(e.data).hdg)),
                                                 vel: vel
                                             };

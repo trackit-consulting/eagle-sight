@@ -16,6 +16,7 @@ Ext.define('ES.view.Layout.Locale.Translation', {
         },
         transitionDuration: 0.3, // default
         animate: true, 
+        //grid structure
         items: [
             {
                 xtype: 'menuitem',
@@ -41,6 +42,7 @@ Ext.define('ES.view.Layout.Locale.Translation', {
                 xtype:'menuitem',
                 iconCls:'es',
                 text:'Español',
+                id: 'esBtn',
                 height:30,
                 listeners: {
                     click:"onMenuItemClick"
@@ -50,6 +52,7 @@ Ext.define('ES.view.Layout.Locale.Translation', {
                 xtype:'menuitem',
                 iconCls:'fr',
                 text:'Français',
+                id:'frBtn',
                 height:30,
                 listeners: {
                     click:"onMenuItemClick"
@@ -58,3 +61,4 @@ Ext.define('ES.view.Layout.Locale.Translation', {
         ]
     })
 });
+
