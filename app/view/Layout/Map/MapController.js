@@ -19,8 +19,8 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                     mapready: function(gmappanel) {
 
-                        //http://localhost:1841/?token=eyAibG5nIjogLTguNjU2ODcyNiwgImxhdCI6IDQxLjE2Mjg2MzQsICJ2aWQiOiAxMzE2NTMsICJlcG9jaCI6IDE0OTIwMTI5NTUwMDAgfQ==
-                        //{"lng": -8.6568726,"lat": 41.1628634,"vid": 160005,"epoch": 1490802031000};
+                        //http://localhost:1841/?token=eyJsbmciOiAtOC42NTY4NzI2LCJsYXQiOiA0MS4xNjI4NjM0LCJ2aWQiOiAxMzE2NTMsImVwb2NoIjogMTUxMzA3NzUzNDAwMCwgInR5cGUiOiAxfQ==
+                        //{"lng": -8.6568726,"lat": 41.1628634,"vid": 131653,"epoch": 1513077534000, "type": 1};
                         //https://www.base64decode.org/ -> Dás encode no json com todos os ficheiros necessários
                         //https://www.epochconverter.com/ -> Geras a data e hora e modificas no json
 
@@ -84,16 +84,17 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                 isJson = false;
                             }
 
-                            var getLng, getLat, getVhc, getCtd;
+                            var getLng, getLat, getVhc, getCtd, getType;
 
                             //Check if all json properties are right
 
-                            if (isJson && retreiveObj.hasOwnProperty('lng') && retreiveObj.hasOwnProperty('lat') && retreiveObj.hasOwnProperty('vid') && retreiveObj.hasOwnProperty('epoch')) {
+                            if (isJson && retreiveObj.hasOwnProperty('lng') && retreiveObj.hasOwnProperty('lat') && retreiveObj.hasOwnProperty('vid') && retreiveObj.hasOwnProperty('epoch') && retreiveObj.hasOwnProperty('type')) {
 
                                 getLng = retreiveObj.lng;
                                 getLat = retreiveObj.lat;
                                 getVhc = retreiveObj.vid;
                                 getCtd = retreiveObj.epoch;
+                                getType = retreiveObj.type;
 
                             } else {
 
@@ -103,6 +104,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                 getLat = 0;
                                 getVhc = 0;
                                 getCtd = 0;
+                                getType = 0;
                             }
 
                             //Save parameters data (route destiny, vehicle id, epoch)
@@ -111,6 +113,19 @@ Ext.define('ES.view.Layout.Map.MapController', {
                             localStorage.setItem("dstLat", getLat);
                             localStorage.setItem("vhcId", getVhc);
                             localStorage.setItem("ctdTime", getCtd);
+                            localStorage.setItem("vhcType", getType);
+
+                            //Getting vehicle type
+
+                            if(localStorage.getItem("vhcType") == "0"){
+
+                                Ext.getCmp('vhcImg').setSrc('ext/resources/images/truck_selected.png');
+
+                            }else if(localStorage.getItem("vhcType") == "1"){
+
+                                Ext.getCmp('vhcImg').setSrc('ext/resources/images/car_selected.png');
+
+                            }
 
                             //Catching page life time
 
@@ -163,6 +178,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
                             setTimeout(function() {
 
                                 if (!isOffline) {
+                                    
 
                                     //Identifying map
 
@@ -426,8 +442,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                                 path: google.maps.SymbolPath.CIRCLE,
                                                 strokeColor: '#841346',
                                                 scale: 8,
-                                                strokeWeight: 2,
-                                                strokeColor: "#B40404"
+                                                strokeWeight: 2
                                             };
 
 
@@ -435,7 +450,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                                             lineSymbol = {
                                                 path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-                                                strokeColor: '#841346',
+                                                strokeColor: '#45938c',
                                             };
 
                                         }
@@ -445,7 +460,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                         var flightPath = new google.maps.Polyline({
                                             path: flightPathCoordinates,
                                             geodesic: true,
-                                            strokeColor: '#5443b2',
+                                            strokeColor: '#215647',
                                             strokeOpacity: 0.8,
                                             strokeWeight: 3,
                                             icons: [{

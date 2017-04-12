@@ -29,7 +29,7 @@ Ext.define('ES.view.Layout.Layout', {
             plugins: 'responsive',
             height: 80,
             style: {
-                background: 'linear-gradient(to left, #4e4376,#2b5876)',
+                background: 'linear-gradient(to left, #136c5a,#2b5876)',
                 'text-align': 'center',
                 'vertical-align': 'middle'
             },
@@ -71,7 +71,7 @@ Ext.define('ES.view.Layout.Layout', {
                 preventHeader: true,
                 dock: 'bottom',
                 bodyStyle: {
-                    "background-color": "#172d35",
+                    background: "linear-gradient(to right, #232526, #414345)",
                     "color": "white",
                     "padding": "8px",
                     "text-align": "center",

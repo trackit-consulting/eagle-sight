@@ -24,19 +24,19 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                 height: 45,
                 align: 'center',
                 style: {
-                    "background-color": "#2a3136",
+                    "background-color": "#0b4439",
                     "color": "white",
-                    "border-right": "1px solid #353c42"
+                    "border-right": "1px solid #237263"
                 },
                 renderer: function(value, metaData) {
                     var color;
                     if (metaData.rowIndex == 1) {
-                        color = "#381f2e";
+                        color = "#204056";
                     } else {
-                        color = "#353c42";
+                        color = "#1b6053";
                     }
 
-                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #4b5055";
+                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
                     return value;
                 },
                 listeners: {
@@ -51,19 +51,19 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                 height: 45,
                 align: 'center',
                 style: {
-                    "background-color": "#2a3136",
+                    "background-color": "#0b4439",
                     "color": "white",
-                    "border-right": "1px solid #353c42"
+                    "border-right": "1px solid #237263"
                 },
                 renderer: function(value, metaData) {
                     var color;
                     if (metaData.rowIndex == 1) {
-                        color = "#381f2e";
+                        color = "#204056";
                     } else {
-                        color = "#353c42";
+                        color = "#1b6053";
                     }
 
-                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #4b5055";
+                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
                     return value;
                 },
                 listeners: {
@@ -78,19 +78,19 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                 height: 45,
                 align: 'center',
                 style: {
-                    "background-color": "#2a3136",
+                    "background-color": "#0b4439",
                     "color": "white",
-                    "border-right": "1px solid #353c42"
+                    "border-right": "1px solid #237263"
                 },
                 renderer: function(value, metaData) {
                     var color;
                     if (metaData.rowIndex == 1) {
-                        color = "#381f2e";
+                        color = "#204056";
                     } else {
-                        color = "#353c42";
+                        color = "#1b6053";
                     }
 
-                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #4b5055";
+                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
                     return value;
                 },
                 listeners: {
@@ -105,19 +105,19 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                 height: 45,
                 align: 'center',
                 style: {
-                    "background-color": "#2a3136",
+                    "background-color": "#0b4439",
                     "color": "white",
-                    "border-right": "1px solid #353c42"
+                    "border-right": "1px solid #237263"
                 },
                 renderer: function(value, metaData) {
                     var color;
                     if (metaData.rowIndex == 1) {
-                        color = "#381f2e";
+                        color = "#204056";
                     } else {
-                        color = "#353c42";
+                        color = "#1b6053";
                     }
 
-                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #4b5055";
+                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
                     return value;
                 },
                 listeners: {
