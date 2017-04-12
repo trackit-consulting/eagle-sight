@@ -19,102 +19,74 @@ Ext.define('ES.view.Layout.Map.Map', {
             position: google.maps.ControlPosition.RIGHT_CENTER
         },
         styles: [{
-                "featureType": "road",
+                "featureType": "all",
+                "elementType": "all",
                 "stylers": [{
-                        "hue": "#5e00ff"
-                    },
-                    {
-                        "saturation": -79
-                    }
-                ]
-            },
-            {
-                "featureType": "poi",
-                "stylers": [{
-                        "saturation": -78
-                    },
-                    {
-                        "hue": "#6600ff"
-                    },
-                    {
-                        "lightness": -47
-                    },
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "road.local",
-                "stylers": [{
-                    "lightness": 22
+                    "hue": "#00ffbc"
                 }]
             },
             {
-                "featureType": "landscape",
+                "featureType": "poi",
+                "elementType": "all",
                 "stylers": [{
-                        "hue": "#6600ff"
-                    },
-                    {
-                        "saturation": -11
-                    }
-                ]
-            },
-            {},
-            {},
-            {
-                "featureType": "water",
-                "stylers": [{
-                        "saturation": -65
-                    },
-                    {
-                        "hue": "#1900ff"
-                    },
-                    {
-                        "lightness": 8
-                    }
-                ]
+                    "visibility": "off"
+                }]
             },
             {
-                "featureType": "road.local",
+                "featureType": "road",
+                "elementType": "all",
                 "stylers": [{
-                        "weight": 1.3
-                    },
-                    {
-                        "lightness": 30
-                    }
-                ]
+                    "saturation": -70
+                }]
             },
             {
                 "featureType": "transit",
+                "elementType": "all",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            },
+            {
+                "featureType": "water",
+                "elementType": "all",
                 "stylers": [{
                         "visibility": "simplified"
                     },
                     {
-                        "hue": "#5e00ff"
-                    },
-                    {
-                        "saturation": -16
+                        "saturation": -60
                     }
                 ]
-            },
-            {
-                "featureType": "transit.line",
-                "stylers": [{
-                    "saturation": -72
-                }]
-            },
-            {}
+            }
         ]
     },
 
-    dockedItems: [
-        {
-            xtype: 'routebar',
-            preventHeader: true,
-            dock: 'bottom'
+    dockedItems: [{
+        xtype: 'routebar',
+        preventHeader: true,
+        dock: 'bottom',
+        dockedItems: {
+            xtype: 'panel',
+            width: 50,
+            height: 65,
+
+            bodyStyle: {
+                 background: "linear-gradient(to right, #232526, #414345)",
+                "padding-top": "33px",
+                "padding-left": "8px"
+            },
+            dock: 'right',
+
+            items: {
+                xtype: 'image',
+                id: 'vhcImg',
+                width: 35,
+                height: 35,
+                src: 'ext/resources/images/truck_selected.png',
+            }
+
+
         }
-    ],
+    }],
 
     addInfoWindow: function(string, lat, lng) {
 
@@ -131,8 +103,8 @@ Ext.define('ES.view.Layout.Map.Map', {
         infowindow.setContent(string);
         infowindow.open(this.gmap, marker);
 
-        google.maps.event.addListener(infowindow,'closeclick',function(){
-        marker.setMap(null);
+        google.maps.event.addListener(infowindow, 'closeclick', function() {
+            marker.setMap(null);
         });
     }
 

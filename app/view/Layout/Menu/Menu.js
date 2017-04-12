@@ -42,12 +42,12 @@ Ext.define('ES.view.Layout.Menu.Menu', {
                 align: 'center',
                 height: 60,
                 style: {
-                    "background-color": "#351e47",
+                    "background-color": "#0b4439",
                     "color": "white",
                     "outline": "1px solid #2b5876"
                 },
                 renderer: function(value, metaData) {
-                    metaData.style = "background-color:#4f3068; color: white; outline: 1px solid white; padding:20px";
+                    metaData.style = "background-color:#136c5a; color: white; outline: 1px solid white; padding:20px";
                     return value;
                 },
 

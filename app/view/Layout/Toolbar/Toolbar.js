@@ -36,11 +36,11 @@ Ext.define('ES.view.Layout.Toolbar.Toolbar', {
             src: 'ext/resources/images/project_logo.png',
             width: 140,
             height: 60,
+    
             style: {
                 "margin-right": "20px"
 
             }
-
         }
 
 
