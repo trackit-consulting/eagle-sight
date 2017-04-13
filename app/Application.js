@@ -30,8 +30,6 @@ Ext.define('ES.Application', {
     launch: function() {
         // TODO - Launch the application
         Ext.tip.QuickTipManager.init();
-
-        console.log('done');
     },
 
     init: function() {
