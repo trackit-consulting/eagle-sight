@@ -15,7 +15,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
     config: {
         listen: {
             component: {
-                'map': {
+                'map': { 
 
                     mapready: function(gmappanel) {
 
@@ -72,7 +72,6 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                             var dec = window.atob(token);
 
-                            console.log(dec);
                             var isJson;
 
                             //Check if the JSON received on parameters is valid
@@ -251,12 +250,6 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                                     var time = rec.data.time;
                                                     var gcTime = new Date();
                                                     var gcTimeStr = gcTime.getHours() + ":" + gcTime.getMinutes() + ":" + gcTime.getSeconds();
-
-                                                    console.log(hmsToSceconds(time));
-                                                    console.log(hmsToSceconds(gcTimeStr));
-                                                    console.log((hmsToSceconds(gcTimeStr) - hmsToSceconds(time)));
-                                                    console.log("<br>");
-
 
                                                     if ((hmsToSceconds(gcTimeStr) - hmsToSceconds(time)) > 60) {
                                                         rec.set("hidden", true);
@@ -449,8 +442,9 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                         } else {
 
                                             lineSymbol = {
-                                                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-                                                strokeColor: '#45938c',
+                                                path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
+                                                strokeColor: '#c61f49',
+                                                strokeWeight: 3
                                             };
 
                                         }

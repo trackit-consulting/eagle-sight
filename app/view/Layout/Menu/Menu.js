@@ -38,6 +38,7 @@ Ext.define('ES.view.Layout.Menu.Menu', {
             {
                 text: locale.address,
                 dataIndex: 'address',
+                id: 'addressBtn',
                 flex: 1,
                 align: 'center',
                 height: 60,

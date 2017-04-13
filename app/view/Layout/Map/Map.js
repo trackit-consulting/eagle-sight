@@ -62,8 +62,25 @@ Ext.define('ES.view.Layout.Map.Map', {
 
     dockedItems: [{
         xtype: 'routebar',
-        preventHeader: true,
+        preventHeader: false,
+        collapsed: false,
+        collapsible: true,
+        titleAlign: 'center',
+        cls: 'x-toolbar-green',  
+        title: 'Route Informations',
         dock: 'bottom',
+        listeners: {
+                afterrender: {
+                    fn: function() {
+                        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                            this.collapse();
+                        } else {
+                            this.expand();
+                        }
+                    }
+
+                }
+        },
         dockedItems: {
             xtype: 'panel',
             width: 50,
@@ -79,12 +96,11 @@ Ext.define('ES.view.Layout.Map.Map', {
             items: {
                 xtype: 'image',
                 id: 'vhcImg',
+                alt: 'vehicle image',
                 width: 35,
                 height: 35,
                 src: 'ext/resources/images/truck_selected.png',
             }
-
-
         }
     }],
 

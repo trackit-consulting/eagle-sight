@@ -1,7 +1,6 @@
 Ext.define('ES.view.Layout.RouteBar.RouteBar', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.routebar',
-
     title: 'RouteData',
     controller: 'routebar',
     viewModel: 'routebar',
@@ -29,6 +28,7 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                     "border-right": "1px solid #237263"
                 },
                 renderer: function(value, metaData) {
+
                     var color;
                     if (metaData.rowIndex == 1) {
                         color = "#204056";

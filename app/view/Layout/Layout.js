@@ -1,5 +1,3 @@
-console.log(locale.about);
-
 Ext.define('ES.view.Layout.Layout', {
 
     extend: 'Ext.panel.Panel',
@@ -41,6 +39,7 @@ Ext.define('ES.view.Layout.Layout', {
             layout: 'fit',
             xtype: 'timelineBar',
             title: locale.timeline,
+            cls: 'x-toolbar-green',
             width: 320,
             collapsible: true,
             height: 500,
@@ -68,7 +67,6 @@ Ext.define('ES.view.Layout.Layout', {
                 xtype: 'panel',
                 height: 33,
                 width: 320,
-                preventHeader: true,
                 dock: 'bottom',
                 bodyStyle: {
                     background: "linear-gradient(to right, #232526, #414345)",

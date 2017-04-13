@@ -5,6 +5,7 @@ Ext.define('ES.view.Layout.RouteBar.RouteBarController', {
     onItemClick: function(table, td, columnIndex, record, tr, rowIndex, e) {
 
         //Show toast when the user clicks at a specific row
+        
         Ext.toast({
         timeout: 5000,
         html: td.innerText,
@@ -12,7 +13,8 @@ Ext.define('ES.view.Layout.RouteBar.RouteBarController', {
         height: 20
 
     });
-    
+
     }
+  
     
 });
