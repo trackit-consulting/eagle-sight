@@ -19,4 +19,5 @@ locale = {
 		parked:"PARKED",
 		value: "Value: ",
 		show:"Show Up",
+		route:"Route Informations",
 	};

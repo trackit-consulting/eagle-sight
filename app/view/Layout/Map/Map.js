@@ -67,7 +67,7 @@ Ext.define('ES.view.Layout.Map.Map', {
         collapsible: true,
         titleAlign: 'center',
         cls: 'x-toolbar-green',  
-        title: 'Route Informations',
+        title: locale.route,
         dock: 'bottom',
         listeners: {
                 afterrender: {
