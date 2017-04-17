@@ -62,25 +62,10 @@ Ext.define('ES.view.Layout.Map.Map', {
 
     dockedItems: [{
         xtype: 'routebar',
-        preventHeader: false,
-        collapsed: false,
-        collapsible: true,
         titleAlign: 'center',
         cls: 'x-toolbar-green',  
         title: 'Route Informations',
         dock: 'bottom',
-        listeners: {
-                afterrender: {
-                    fn: function() {
-                        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-                            this.collapse();
-                        } else {
-                            this.expand();
-                        }
-                    }
-
-                }
-        },
         dockedItems: {
             xtype: 'panel',
             width: 50,

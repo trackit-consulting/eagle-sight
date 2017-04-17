@@ -185,7 +185,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
 
                                     //Start to listen the Websocket
 
-                                    var wsUri = "ws://192.168.1.118:8089/";
+                                    var wsUri = "ws://localhost:8089/";
 
                                     //Polyline coordinates
 
