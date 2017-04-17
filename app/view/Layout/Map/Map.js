@@ -64,7 +64,7 @@ Ext.define('ES.view.Layout.Map.Map', {
         xtype: 'routebar',
         titleAlign: 'center',
         cls: 'x-toolbar-green',  
-        title: 'Route Informations',
+        title: locale.route,
         dock: 'bottom',
         dockedItems: {
             xtype: 'panel',

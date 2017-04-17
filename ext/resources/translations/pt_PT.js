@@ -20,4 +20,5 @@ locale = {
 		parked:"PARADO",
 		value: "Valor: ",
 		show:"Mostrar",
+		route:"Informações do Trajeto",
 };
