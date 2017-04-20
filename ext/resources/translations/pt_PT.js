@@ -24,4 +24,6 @@ locale = {
 		welcome:"Bem-vindo, acompanhe em tempo real o trajeto do veículo.",
 		end:"A ligação foi encerrada.",
 		connecterror:"Lamentamos, aconteceu um erro durante a ligação.",
+		registerror:"Lamentamos, não foi encontrado nenhum registo",
+		geocodererror:"Geocoder falhou devido ao seguinte erro: ",
 };

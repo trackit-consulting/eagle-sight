@@ -13,11 +13,11 @@ Ext.define('ES.util.Helper.Alerts', {
     },
 
     wsNoResults: function() {
-      Ext.Msg.alert(locale.alert, "Lamentamos, não foi encontrado nenhum registo");
+      Ext.Msg.alert(locale.alert, locale.registerror );
     },
 
     wsGeocoderError: function(error) {
-      Ext.Msg.alert(locale.alert, "Geocoder falhou devido ao seguinte erro:" + error);
+      Ext.Msg.alert(locale.alert, locale.geocodererror + error);
     }
   }
 });
