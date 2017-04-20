@@ -1,521 +1,112 @@
+//http://localhost:1841/?token=eyJsbmciOiAtOC42NTY4NzI2LCJsYXQiOiA0MS4xNjI4NjM0LCJ2aWQiOiAxMzE2NTMsImVwb2NoIjogMTUxMzA3NzUzNDAwMCwgInR5cGUiOiAxfQ==
+//{"lng": -8.6568726,"lat": 41.1628634,"vid": 131653,"epoch": 1513077534000, "type": 1};
 Ext.define('ES.view.Layout.Map.MapController', {
-    extend: 'Ext.app.ViewController',
-    alias: 'controller.map',
-    requires: [
-        'Ext.container.Container',
-        'Ext.layout.container.Border',
-        'Ext.layout.container.Fit',
-        'Ext.ux.GMapPanel',
-        'Ext.ux.IFrame',
-        'Ext.window.Window',
-        'ES.store.RouteData',
-        'ES.store.Timeline'
-    ],
-
-    config: {
-        listen: {
-            component: {
-                'map': { 
-
-                    mapready: function(gmappanel) {
-
-                        //http://localhost:1841/?token=eyJsbmciOiAtOC42NTY4NzI2LCJsYXQiOiA0MS4xNjI4NjM0LCJ2aWQiOiAxMzE2NTMsImVwb2NoIjogMTUxMzA3NzUzNDAwMCwgInR5cGUiOiAxfQ==
-                        //{"lng": -8.6568726,"lat": 41.1628634,"vid": 131653,"epoch": 1513077534000, "type": 1};
-                        //https://www.base64decode.org/ -> Dás encode no json com todos os ficheiros necessários
-                        //https://www.epochconverter.com/ -> Geras a data e hora e modificas no json
-
-                        //Calling timeline store
-
-                        var timelineStore = Ext.getStore('timeline');
-
-                        var isOffline;
-                        var onError;
-
-                        //Calling route information store
-
-                        var routeStore = Ext.getStore('routedata');
-
-                        //Receiving parameters from the Token
-
-                        /*
-                            var obj = {
-                            "lng": -8.6568726,
-                            "lat": 41.1628634,
-                            "vid": 160005,
-                            "epoch": 1490802031000
-                            };
-
-                            var stringfy = JSON.stringify(obj);
-
-                            var enc = window.btoa(stringfy);
-                        */
-
-                        //Check if token is valid
-
-
-                        if (window.location.search === '' || window.location.search.split("?")[1].substr(5, 1) != '=' || window.location.search.split("?")[1].split("=")[0] != 'token' || window.location.search.split("?")[1].split("=")[1] == '') {
-                            onError = true;
-                            Ext.Msg.alert(locale.alert, locale.tokenerror);
-                        } else {
-                            onError = false;
-                        }
-
-                        //Run the scriptis everything is fine with the GET parameters
-
-                        if (!onError) {
-
-                            var query = window.location.search.split("?");
-
-                            var token = query[1].split("=")[1];
-
-                            //Decoding the parameter
-
-                            var dec = window.atob(token);
-
-                            var isJson;
-
-                            //Check if the JSON received on parameters is valid
- 
-                            try {
-                                var retreiveObj = JSON.parse(dec);
-                                isJson = true;
-                            } catch (e) {
-                                isJson = false;
-                            }
-
-                            var getLng, getLat, getVhc, getCtd, getType;
-
-                            //Check if all json properties are right
-
-                            if (isJson && retreiveObj.hasOwnProperty('lng') && retreiveObj.hasOwnProperty('lat') && retreiveObj.hasOwnProperty('vid') && retreiveObj.hasOwnProperty('epoch') && retreiveObj.hasOwnProperty('type')) {
-
-                                getLng = retreiveObj.lng;
-                                getLat = retreiveObj.lat;
-                                getVhc = retreiveObj.vid;
-                                getCtd = retreiveObj.epoch;
-                                getType = retreiveObj.type;
-
-                            } else {
-
-                                //Reset the token
-
-                                getLng = 0;
-                                getLat = 0;
-                                getVhc = 0;
-                                getCtd = 0;
-                                getType = 0;
-                            }
-
-                            //Save parameters data (route destiny, vehicle id, epoch)
-
-                            localStorage.setItem("dstLng", getLng);
-                            localStorage.setItem("dstLat", getLat);
-                            localStorage.setItem("vhcId", getVhc);
-                            localStorage.setItem("ctdTime", getCtd);
-                            localStorage.setItem("vhcType", getType);
-
-                            //Getting vehicle type
-
-                            if(localStorage.getItem("vhcType") == "0"){
-
-                                Ext.getCmp('vhcImg').setSrc('ext/resources/images/truck_selected.png');
-
-                            }else if(localStorage.getItem("vhcType") == "1"){
-
-                                Ext.getCmp('vhcImg').setSrc('ext/resources/images/car_selected.png');
-
-                            }
-
-                            //Catching page life time
-
-                            var getEpochEnding = new Date(parseInt(localStorage.getItem('ctdTime')));
-
-                            //Check if the vehicle is parked
-
-                            var countVel = 0;
-
-                            //Create countdown based on life time so the user can see when the page is going to be offline
-
-                            var updateTime = setInterval(function() {
-
-                                var getTimeNow = new Date();
-                                var timeZone = getTimeNow.getTimezoneOffset();
-                                var ctdMillis = new Date(Math.abs(getEpochEnding - (getTimeNow - (timeZone * 60000))));
-
-                                //Converting the epoch milliseconds to hours/minutes/seconds
-
-                                var ctdSeconds = parseInt((ctdMillis / 1000) % 60);
-                                var ctdMinutes = parseInt((ctdMillis / (1000 * 60)) % 60);
-                                var ctdHours = parseInt((ctdMillis / (1000 * 60 * 60)));
-
-                                if ((getTimeNow - (timeZone * 60000)) > getEpochEnding) {
-                                    Ext.Msg.alert(locale.alert, locale.ttl);
-                                    ctdSeconds = 0;
-                                    ctdMinutes = 0;
-                                    ctdHours = 0;
-                                    isOffline = true;
-                                    timelineStore.removeAll();
-                                    clearInterval(updateTime);
-                                }
-
-
-
-                                //Change the route information row
-
-                                routeStore.each(function(rec) {
-
-                                    if (rec.internalId == 1) {
-
-                                        rec.set("countdown", ctdHours + ":" + ("0" + ctdMinutes).substr(-2) + ":" + ("0" + ctdSeconds).substr(-2));
-
-                                    }
-
-                                });
-
-                            }, 1000);
-
-                            setTimeout(function() {
-
-                                if (!isOffline) {
-                                    
-
-                                    //Identifying map
-
-                                    var map = gmappanel.gmap;
-
-                                    //Start to listen the Websocket
-
-                                    var wsUri = "ws://localhost:8089/";
-
-                                    //Polyline coordinates
-
-                                    var flightPathCoordinates = [];
-
-                                    //Load all timeline store data
-
-                                    timelineStore.load(
-                                        function(records, op, success) {
-
-                                            var list, i;
-                                            var sameVhc = true;
-
-                                            for (i = 0; i < records.length; i++) {
-                                                list = records[i].data;
-
-                                                if (list.vid != parseInt(getVhc)) {
-                                                    sameVhc = false;
-                                                } else {
-
-                                                    var reloadData = {
-                                                        lat: list.lat,
-                                                        lng: list.lng
-                                                    };
-                                                    flightPathCoordinates.push(reloadData);
-                                                }
-                                            }
-
-                                            if (!sameVhc) {
-                                                timelineStore.removeAll();
-                                            }
-                                        }
-                                    );
-
-                                    drawPolyline(0);
-
-                                    client = new WebSocket(wsUri, "echo-protocol");
-
-                                    //On error
-
-                                    client.onerror = function() {
-                                        console.log('Connection Error');
-                                    };
-
-                                    //On open
-
-                                    client.onopen = function() {
-
-                                        console.log('WebSocket Client Connected');
-
-                                        //Ask for information
-
-                                        function askLocation() {
-                                            if (client.readyState === client.OPEN) {
-                                                var number = Math.round(Math.random() * 0xFFFFFF);
-                                                client.send(number.toString());
-
-                                                var gridStore = Ext.getCmp('timelineBar').getStore();
-
-                                                timelineStore.each(function(rec) {
-
-                                                    var time = rec.data.time;
-                                                    var gcTime = new Date();
-                                                    var gcTimeStr = gcTime.getHours() + ":" + gcTime.getMinutes() + ":" + gcTime.getSeconds();
-
-                                                    if ((hmsToSceconds(gcTimeStr) - hmsToSceconds(time)) > 60) {
-                                                        rec.set("hidden", true);
-                                                    }
-
-                                                });
-
-
-                                                setTimeout(askLocation, 14000);
-                                            }
-                                        }
-                                        askLocation();
-
-
-                                    };
-
-                                    //On close
-
-                                    client.onclose = function() {
-                                        console.log('echo-protocol Client Closed');
-                                    };
-
-
-                                    setTimeout(function() {
-
-                                        addMarker(localStorage.getItem('dstLat'), localStorage.getItem('dstLng'));
-
-                                        function addMarker(lat, lng) {
-
-                                            var pos = new google.maps.LatLng(lat, lng);
-
-                                            var marker = new google.maps.Marker({
-                                                position: pos,
-                                                title: 'Destination',
-                                                map: gmappanel.gmap
-                                            });
-
-                                            var infoWindow = new google.maps.InfoWindow({
-                                                content: "Destination Point"
-                                            });
-                                            infoWindow.open(map, marker);
-
-                                        }
-
-                                    }, 2000);
-
-                                    //Receiving messages from the Websocket
-
-                                    client.onmessage = function(e) {
-
-                                        if (parseInt(localStorage.getItem('vhcId')) == parseInt(JSON.parse(e.data).vid) && !isOffline) {
-
-                                            var lat1 = parseFloat(JSON.parse(e.data).loc.lat);
-                                            var lon1 = parseFloat(JSON.parse(e.data).loc.lon);
-                                            var lat2 = parseFloat(localStorage.getItem('dstLat'));
-                                            var lon2 = parseFloat(localStorage.getItem('dstLng'));
-                                            var vel = parseFloat(JSON.parse(e.data).gsp);
-                                            var directionsService = new google.maps.DirectionsService();
-                                            var directionsDisplay = new google.maps.DirectionsRenderer();
-
-                                            var polylineData = {
-                                                lat: lat1,
-                                                lng: lon1
-                                            };
-
-                                            flightPathCoordinates.push(polylineData);
-
-                                            //Receiving origin and destiny location
-
-                                            var request = {
-                                                origin: {
-                                                    lat: lat1,
-                                                    lng: lon1
-                                                },
-                                                destination: {
-                                                    lat: lat2,
-                                                    lng: lon2
-                                                },
-                                                travelMode: google.maps.DirectionsTravelMode.DRIVING
-                                            };
-
-                                            directionsService.route(request, function(response, status) {
-                                                if (status == google.maps.DirectionsStatus.OK) {
-                                                    routeStore.each(function(rec) {
-                                                        if (rec.internalId == 1) {
-                                                            rec.set("at", response.routes[0].legs[0].duration.text);
-                                                            rec.set("dkm", (response.routes[0].legs[0].distance.value) / 1000);
-
-                                                            if (parseInt(vel) == 0) {
-                                                                rec.set("vel", locale.parked);
-                                                            } else {
-                                                                rec.set("vel", vel);
-                                                            }
-                                                        }
-                                                    });
-
-                                                }
-                                            });
-
-
-                                            //Get current date
-
-                                            var date = new Date();
-                                            var hour = ("0" + date.getHours()).substr(-2);
-                                            var minutes = ("0" + date.getMinutes()).substr(-2);
-                                            var seconds = ("0" + date.getSeconds()).substr(-2);
-
-                                            //Get values to insert on timeline
-
-                                            var specifyInfo = {
-                                                vid: parseInt(JSON.parse(e.data).vid),
-                                                time: hour + ":" + minutes + ":" + seconds,
-                                                lat: lat1,
-                                                lng: lon1,
-                                                address: locale.show,
-                                                dir: degToCompass(parseFloat(JSON.parse(e.data).hdg)),
-                                                vel: vel,
-                                                hidden: false
-                                            };
-
-                                            //Degrees to compass (vehicle direction)
-
-                                            function degToCompass(num) {
-                                                var val = Math.floor((num / 22.5) + 0.5);
-                                                var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-                                                return arr[(val % 16)];
-                                            }
-
-                                            //Put data on timeline
-
-                                            timelineStore.add(specifyInfo);
-                                            timelineStore.save();
-
-                                            drawPolyline();
-                                            var circle = new google.maps.Circle({
-                                                center: polylineData,
-                                                radius: 50,
-                                                strokeColor: "#E16D65",
-                                                strokeOpacity: 1,
-                                                strokeWeight: 3,
-                                                fillColor: "#E16D65",
-                                                fillOpacity: 0
-                                            });
-
-                                            //Check if car is parked
-
-                                            if (parseInt(vel) == 0) {
-                                                countVel++;
-                                            }
-
-                                            //Show circle when car is parked
-
-                                            drawPolyline(parseInt(vel));
-
-                                            //Turn counter into 0 when the car is not parked
-
-                                            if (parseInt(vel) > 0) {
-                                                countVel = 0;
-                                            }
-
-                                            //Move map to the current vehicle address when the client asks for new informations
-
-                                            map.panTo(new google.maps.LatLng(lat1, lon1));
-
-                                        } else {
-
-                                            //Close the client if the link is expired
-
-                                            client.close();
-                                        }
-
-                                    };
-
-                                    //Drawing the polylines
-
-                                    function drawPolyline(vel) {
-
-                                        var lineSymbol;
-
-                                        if (countVel > 2 && vel <= 0) {
-
-                                            lineSymbol = {
-                                                path: google.maps.SymbolPath.CIRCLE,
-                                                strokeColor: '#841346',
-                                                scale: 8,
-                                                strokeWeight: 2
-                                            };
-
-
-                                        } else {
-
-                                            lineSymbol = {
-                                                path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
-                                                strokeColor: '#c61f49',
-                                                strokeWeight: 3
-                                            };
-
-                                        }
-
-                                        //Polyline styles
-
-                                        var flightPath = new google.maps.Polyline({
-                                            path: flightPathCoordinates,
-                                            geodesic: true,
-                                            strokeColor: '#215647',
-                                            strokeOpacity: 0.8,
-                                            strokeWeight: 3,
-                                            icons: [{
-                                                icon: lineSymbol,
-                                                offset: '100%'
-                                            }],
-                                        });
-
-                                        //Create animated circle (Show when car is parked)
-
-                                        function animateCircle(line) {
-                                            var count = 0;
-                                            window.setInterval(function() {
-                                                count = (count + 1) % 200;
-
-                                                var icons = line.get('icons');
-                                                icons[0].offset = (count / 2) + '%';
-                                                line.set('icons', icons);
-                                            }, 1000);
-                                        }
-
-                                        // Drawing Polyline Points
-
-                                        for (var i = 0; i < flightPath.getPath().getLength(); i++) {
-                                            new google.maps.Marker({
-                                                icon: {
-                                                    url: "https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png",
-                                                    size: new google.maps.Size(7, 7),
-                                                    anchor: new google.maps.Point(4, 4)
-                                                },
-                                                position: flightPath.getPath().getAt(i),
-                                                map: map
-                                            });
-                                        }
-
-                                        flightPath.setMap(map);
-
-
-                                    }
-                                }
-                            }, 1000);
-
-                            //Hours, minutes and seconds to seconds
-
-                            function hmsToSceconds(str) {
-                                var p = str.split(':'),
-                                    s = 0,
-                                    m = 1;
-
-                                while (p.length > 0) {
-                                    s += m * parseInt(p.pop(), 10);
-                                    m *= 60;
-                                }
-
-                                return s;
-                            }
-                            //Finished
-                        }
+  extend: 'Ext.app.ViewController',
+  alias: 'controller.map',
+  requires: [
+    'Ext.container.Container',
+    'Ext.layout.container.Border',
+    'Ext.layout.container.Fit',
+    'Ext.ux.GMapPanel',
+    'Ext.ux.IFrame',
+    'Ext.window.Window',
+    'ES.store.RouteData',
+    'ES.store.Timeline',
+    'ES.util.Helper.Validations',
+    'ES.util.Helper.Token',
+    'ES.util.Helper.Counter',
+    'ES.util.Helper.Initialize',
+    'ES.util.Helper.Polyline',
+    'ES.util.Helper.GlobalVars',
+    'ES.util.Helper.Alerts',
+    'ES.util.Helper.Timeline',
+    'ES.util.Helper.Savedata',
+    'ES.util.Helper.Routebar',
+  ],
+  config: {
+    listen: {
+      component: {
+        'map': {
+          mapready: function(gmappanel) {
+
+            if (!ES.util.Helper.Validations.validateToken()) {
+             
+              //Validate and retreive token
+              ES.util.Helper.Validations.validateTokenProperties(ES.util.Helper.Token.decryptToken());
+              ES.util.Helper.Token.retreiveTokenProperties(ES.util.Helper.Token.decryptToken());
+
+              //Countdown to show how long does it take for the link to expire
+              ES.util.Helper.Counter.startNewCountdown(Ext.getStore('timeline'), Ext.getStore('routedata'));
+
+              setTimeout(function() {
+
+                if (!ES.util.Helper.GlobalVars.isOffline) {
+
+                  //Recover all the saved data in sessions and shows to the user when the page refreshes
+                  ES.util.Helper.Initialize.reloadSavedData(Ext.getStore('timeline'), localStorage.getItem('mid'));
+                  ES.util.Helper.Polyline.initPolylineDraw(gmappanel.gmap);
+
+                  //Creates a new Websocket
+                  client = new WebSocket(ES.util.Helper.GlobalVars.ws, ES.util.Helper.GlobalVars.protocol);
+
+                  client.onerror = function() {
+                    ES.util.Helper.Alerts.wsErrorAlert();
+                  };
+
+                  client.onopen = function() {
+                    ES.util.Helper.Alerts.wsOpenedAlert();
+
+                    //Sends the token data to the server
+                    ES.util.Helper.Initialize.sendData(client, ES.util.Helper.Token.decryptToken());
+
+                    //Adds a new marker to point the route destination
+                    ES.util.Helper.Initialize.addDestinationMarker(localStorage.getItem('dstLat'), localStorage.getItem('dstLng'), gmappanel.gmap);
+                  };
+
+                  client.onclose = function() {
+                    ES.util.Helper.Alerts.wsClosedAlert();
+                  };
+
+                  client.onmessage = function(e) {
+
+                    if (!ES.util.Helper.GlobalVars.isOffline) {
+
+                      //Clean the timeline if necessary
+                      ES.util.Helper.Timeline.cleanTimeline(Ext.getStore('timeline'));
+
+                      //Save the received data
+                      ES.util.Helper.Savedata.saveReceivedData(parseFloat(JSON.parse(e.data).loc.lat), parseFloat(JSON.parse(e.data).loc.lon), parseFloat(localStorage.getItem('dstLat')), parseFloat(localStorage.getItem('dstLng')), parseFloat(JSON.parse(e.data).gsp));
+
+                      //Save the coordinates to draw on the map
+                      ES.util.Helper.Savedata.saveCoordinates(parseFloat(JSON.parse(e.data).loc.lat),  parseFloat(JSON.parse(e.data).loc.lon));
+
+                      //Update the route bar with the last received data
+                      ES.util.Helper.Routebar.requestRoutebarData(new google.maps.DirectionsService(), Ext.getStore('routedata'));
+
+                      //Add a new row to the timeline
+                      ES.util.Helper.Timeline.addTimelineRow(parseInt(JSON.parse(e.data).vid), parseFloat(JSON.parse(e.data).hdg), Ext.getStore('timeline'));
+
+                      //Check if the vehicle is parked or not
+                      ES.util.Helper.Polyline.checkIfParked();
+
+                      //Starts polyline drawing
+                      ES.util.Helper.Polyline.initPolylineDraw(gmappanel.gmap, ES.util.Helper.Polyline.isParked());
+
+                      //Follow the last received address, changing the map focus/motion
+                      ES.util.Helper.Polyline.focusOnAddress(gmappanel.gmap);
+
+                    } else {
+                      client.close();
                     }
+
+                  };
+
                 }
+              }, 1000);
             }
+          }
         }
+      }
     }
+  }
 });
