@@ -19,6 +19,6 @@ Ext.define('ES.util.Helper.Mobile', {
       } else {
         return false;
       }
-    },
+    }
   }
 });

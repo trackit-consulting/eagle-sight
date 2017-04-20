@@ -7,7 +7,7 @@ Ext.define('ES.util.Helper.GlobalVars', {
     lon2: 0,//Longitude from destination address
     vel: 0, //Current speed
     isOffline: false, //Check if page expired or offline
-    ws: "ws://localhost:8089/", //Websocket address
+    ws: "ws://127.0.0.1:8080/", //Websocket address
     protocol: "echo-protocol", 
     flightPathCoordinates: [] //All route coordinates
   }

@@ -25,7 +25,7 @@ Ext.define('ES.view.Layout.Menu.Menu', {
         height: 60,
         style: {
           "background-color": "#2f699b",
-          "color": "white",
+          "color": "white"
         },
         renderer: function(value, metaData) {
           metaData.style = "background-color:#2b5876; color: white; outline: 1px solid white; padding:20px;";
