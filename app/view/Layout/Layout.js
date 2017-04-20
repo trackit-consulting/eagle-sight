@@ -39,7 +39,7 @@ Ext.define('ES.view.Layout.Layout', {
       collapsible: true,
       height: 500,
       style: {
-        background: 'linear-gradient(to left, #385871 , #507ea3)',
+        background: 'linear-gradient(to left, #385871 , #507ea3)'
       },
       listeners: {
         afterrender: {
@@ -68,6 +68,6 @@ Ext.define('ES.view.Layout.Layout', {
         },
         html: '<a style="text-decoration: none; color:white" target="_blank" href="http://www.trackit.pt/en/about-us/">' + locale.about + ' | </a><a target="_blank" style="text-decoration: none; color:white" href="http://www.trackit.pt/en/trackit-news/">' + locale.news + '</a><a style="text-decoration: none; color:white" target="_blank" href="http://www.trackit.pt/en/contacts/"> | ' + locale.contacts + '</a>'
       }]
-    },
+    }
   ]
 });

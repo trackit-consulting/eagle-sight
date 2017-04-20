@@ -24,7 +24,7 @@ Ext.define('ES.view.Layout.Locale.Translation', {
                 id: 'enBtn',
                 height: 30,
                 listeners: {
-                    click: "onMenuItemClick",
+                    click: "onMenuItemClick"
                 }
             },
             {

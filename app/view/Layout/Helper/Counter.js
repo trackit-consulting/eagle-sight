@@ -54,6 +54,6 @@ Ext.define('ES.util.Helper.Counter', {
           rec.set("countdown", ES.util.Helper.Counter.ctdHours + ":" + ("0" + ES.util.Helper.Counter.ctdMinutes).substr(-2) + ":" + ("0" + ES.util.Helper.Counter.ctdSeconds).substr(-2));
         }
       });
-    },
+    }
   }
 });

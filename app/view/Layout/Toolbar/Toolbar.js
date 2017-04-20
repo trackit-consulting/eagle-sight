@@ -15,7 +15,7 @@ Ext.define('ES.view.Layout.Toolbar.Toolbar', {
       width: 90,
       height: 35,
       style: {
-        "margin-left": "-16px",
+        "margin-left": "-16px"
       }
     },
     {
@@ -23,7 +23,7 @@ Ext.define('ES.view.Layout.Toolbar.Toolbar', {
       width: 2
     },
     {
-      xtype: 'translationbtn',
+      xtype: 'translationbtn'
     },
     "->", {
       xtype: 'image',

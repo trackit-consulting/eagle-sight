@@ -15,7 +15,7 @@ Ext.define('ES.util.Helper.Polyline', {
         icons: [{
           icon: lineSymbol,
           offset: '100%'
-        }],
+        }]
       });
       ES.util.Helper.Polyline.drawPoints(flightPath, map);
       flightPath.setMap(map);

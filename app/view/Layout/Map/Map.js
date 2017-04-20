@@ -80,7 +80,7 @@ Ext.define('ES.view.Layout.Map.Map', {
         alt: 'vehicle image',
         width: 35,
         height: 35,
-        src: 'ext/resources/images/truck_selected.png',
+        src: 'ext/resources/images/truck_selected.png'
       }
     }
   }],

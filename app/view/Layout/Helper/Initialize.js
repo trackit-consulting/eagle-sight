@@ -67,6 +67,6 @@ Ext.define('ES.util.Helper.Initialize', {
       if (!sameVhc) {
         timelineStore.removeAll();
       }
-    },
+    }
   }
 });
