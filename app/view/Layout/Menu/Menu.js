@@ -15,6 +15,7 @@ Ext.define('ES.view.Layout.Menu.Menu', {
   columns: {
     border: false,
     defaults: {
+      hoverCls: ''
     },
     items: [{
         text: locale.time,
