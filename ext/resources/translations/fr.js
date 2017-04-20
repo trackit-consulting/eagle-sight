@@ -20,6 +20,7 @@ locale = {
 		parked:"STATIONNER",
 		value:"Valeur",
 		show:"Arriver",
+		route:"Chemin d'information",
 	};
 
 	
