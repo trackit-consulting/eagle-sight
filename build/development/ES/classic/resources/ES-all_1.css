@@ -1,18 +1,24 @@
-/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:1 */
+/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:3 */
 .pt_PT {
     background-image: url('/ext/resources/flags/pt.png') !important;
 }
-/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:5 */
+/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:7 */
 .es {
     background-image: url('/ext/resources/flags/es.png') !important;
 }
-/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:9 */
+/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:11 */
 .en {
     background-image: url('/ext/resources/flags/england.png') !important;
 }
-/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:13 */
+/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/sass/etc/flagIcons.scss:15 */
 .fr {
     background-image: url('/ext/resources/flags/fr.png') !important;
+}
+/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/sass/etc/toolbarstyle.scss:3 */
+.x-toolbar-green .x-panel-header,
+.x-toolbar-green .x-tool-tool-el,
+.x-toolbar-green {
+    background: #838a47 !important;
 }
 /* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/ext/packages/core/sass/src/util/SizeMonitor.scss:5 */
 .x-size-monitored {
@@ -16223,22 +16229,4 @@ div.x-border-layout-ct {
 /* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1784 */
 .x-tab-default-right.x-tab-rotate-right.x-rtl {
     margin: 4px 0 0 0;
-}
-/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1802 */
-.x-tab-default-right.x-tab-focus {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1831 */
-.x-tab-default-right.x-tab-focus.x-tab-over {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1860 */
-.x-tab-default-right.x-tab-focus.x-tab-active {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
 }

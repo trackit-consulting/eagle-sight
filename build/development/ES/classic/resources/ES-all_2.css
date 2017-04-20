@@ -1,3 +1,21 @@
+/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1802 */
+.x-tab-default-right.x-tab-focus {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1831 */
+.x-tab-default-right.x-tab-focus.x-tab-over {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+/* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1860 */
+.x-tab-default-right.x-tab-focus.x-tab-active {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
 /* C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1886 */
 .x-tab-default-bottom {
     margin: 0 4px 0 0;

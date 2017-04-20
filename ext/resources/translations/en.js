@@ -20,4 +20,9 @@ locale = {
 		value: "Value: ",
 		show:"Show Up",
 		route:"Route Informations",
+		welcome:"Welcome, watch in real time the path of the vehicle.",
+		end:"The connection was lost.",
+		connecterror:"Sorry, an error occurred while connecting.",
+		registerror:"Sorry, no records found",
+		geocodererror:"Geocoder failed due to the following error: ",
 	};
