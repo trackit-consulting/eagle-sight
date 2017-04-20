@@ -3,7 +3,7 @@ Ext.define('ES.util.Helper.Routebar', {
    /**
     * Request information to fill the route bar
     * @param {object} directionsService Receive function that will do the route request
-    * @param {object} routeStore Retreive route store
+    * @param {object[]} routeStore Retreive route store
     */
     requestRoutebarData: function(directionsService, routeStore) {
       var request = {
@@ -23,7 +23,7 @@ Ext.define('ES.util.Helper.Routebar', {
    /**
     * Request information to fill the route bar
     * @param {object} directionsService Do a route request
-    * @param {object} routeStore Retreive route store
+    * @param {object[]} routeStore Retreive route store
     * @param {string} request Receive the origin and the destination from the route
     */
     updateRoutebarData: function(directionsService, routeStore, request) {
@@ -46,7 +46,7 @@ Ext.define('ES.util.Helper.Routebar', {
    /**
     * Request information to fill the route bar
     * @param {int} vel Check if car is parked or not
-    * @param {object} routeStore Retreive route store
+    * @param {object[]} routeStore Retreive route store
     */
     showVel: function(routeStore, vel) {
       routeStore.each(function(rec) {
