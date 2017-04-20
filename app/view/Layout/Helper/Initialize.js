@@ -46,7 +46,7 @@ Ext.define('ES.util.Helper.Initialize', {
 
     /**
     * Starts the reload by redrawing the polylines and the timeline again
-    * @param {object} records Retreive timeline store recorded data
+    * @param {object[]} records Retreive timeline store recorded data
     * @param {int} getVhc Filter the records by checking the user's vehicle ID
     */
     startReload: function(records, getVhc) {

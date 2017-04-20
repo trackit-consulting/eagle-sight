@@ -70,7 +70,7 @@ Ext.define('ES.util.Helper.Timeline', {
     * Show info window on map
     * @param {float} lat Latitude from the address to show
     * @param {lng} lng Longitude from the address to show
-    * @param {json} routeStore Route bar store
+    * @param {object[]} routeStore Route bar store
     * @param {object} newInformation Google Maps Widget
     */
     showAddress: function(lat, lng, vel, routeStore, newInformation) {
@@ -84,10 +84,10 @@ Ext.define('ES.util.Helper.Timeline', {
             newInformation.addInfoWindow(results[0].formatted_address, lat, lng);
             ES.util.Helper.Routebar.showVel(routeStore, vel);
           } else {
-            console.log("No results found");
+            ES.util.Helper.Alerts.wsNoResults();
           }
         } else {
-          console.log("Geocoder failed due to: " + status);
+          ES.util.Helper.Alerts.wsGeocoderError(status);
         }
       });
     }

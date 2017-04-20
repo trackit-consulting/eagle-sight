@@ -7,8 +7,8 @@ Ext.define('ES.util.Helper.Counter', {
 
   /**
   * Show how many time will it take to expire the Link
-  * @param {object} timelineStore Client's Timeline Store
-  * @param {object} routeStore Client's Route bar Store
+  * @param {object[]} timelineStore Client's Timeline Store
+  * @param {object[]} routeStore Client's Route bar Store
   */
   startNewCountdown: function(timelineStore, routeStore) {
       var getEpochEnding = new Date(parseInt(localStorage.getItem('ctdTime')));
@@ -29,7 +29,7 @@ Ext.define('ES.util.Helper.Counter', {
     * @param {date} getTimeNow Get current Time
     * @param {int} timeZone Get the user's time zone
     * @param {int} getEpochEnding Get the Link expiration date/time in milliseconds
-    * @param {object} timelineStore Get the user's Timeline Store
+    * @param {object[]} timelineStore Get the user's Timeline Store
     * @param {setInterval} updateTime Receive the countdown timer
     */
     checkIfReached: function(getTimeNow, timeZone, getEpochEnding, timelineStore, updateTime){
@@ -46,7 +46,7 @@ Ext.define('ES.util.Helper.Counter', {
 
     /**
     * This function is called every second to update the countdown on routebar
-    * @param {object} routeStore Get the user's Route Store
+    * @param {object[]} routeStore Get the user's Route Store
     */
     updateCountdown: function(routeStore) {
       routeStore.each(function(rec) {
