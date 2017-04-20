@@ -21,7 +21,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
     'ES.util.Helper.Alerts',
     'ES.util.Helper.Timeline',
     'ES.util.Helper.Savedata',
-    'ES.util.Helper.Routebar',
+    'ES.util.Helper.Routebar'
   ],
   config: {
     listen: {
