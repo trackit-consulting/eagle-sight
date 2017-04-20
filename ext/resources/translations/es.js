@@ -20,4 +20,5 @@ locale = {
         parked:"ESTACIONADO",
 		value:"Valor: ",
 		show:"Mostrar",
+		route:"Informaciones del Itinerario",
 	};
