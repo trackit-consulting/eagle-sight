@@ -11,7 +11,7 @@ Ext.define('ES.util.Helper.Timeline', {
           var time = rec.data.time;
           var gcTime = new Date();
           var gcTimeStr = gcTime.getHours() + ":" + gcTime.getMinutes() + ":" + gcTime.getSeconds();
-          if ((ES.util.Helper.Timeline.hmsToSeconds(gcTimeStr) - ES.util.Helper.Timeline.hmsToSeconds(time)) > 60) {
+          if ((ES.util.Helper.Timeline.hmsToSeconds(gcTimeStr) - ES.util.Helper.Timeline.hmsToSeconds(time)) > 180) {
             rec.set("hidden", true);
           }
         });
