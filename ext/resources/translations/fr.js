@@ -24,6 +24,8 @@ locale = {
 		welcome:"Bienvenue, regardez en temps réel le chemin du véhicule.",
 		end:"La connexion a été perdue.",
 		connecterror:"Désolé, une erreur s'est produite lors de la connexion.",
-	};
+		registerror:"Désolé, aucun enregistrement n'a été trouvé",
+		geocodererror:"Le Geocoder a échoué en raison de l'erreur suivante:",
+};
 
 	
