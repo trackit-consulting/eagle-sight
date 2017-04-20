@@ -21,4 +21,7 @@ locale = {
 		value:"Valor: ",
 		show:"Mostrar",
 		route:"Informaciones del Itinerario",
+		welcome:"Bienvenido,venga ver en tiempo real el camino del vehículo.",
+		end:"Se ha perdido la conexión.",
+		connecterror:"Lo sentimos, se ha producido un error al conectar",
 	};
