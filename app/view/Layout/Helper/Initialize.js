@@ -39,7 +39,7 @@ Ext.define('ES.util.Helper.Initialize', {
     reloadSavedData: function(timelineStore, getVhc) {
       timelineStore.load(
         function(records, op, success) {
-         ES.util.Helper.Initialize.startReload(records, getVhc)
+         ES.util.Helper.Initialize.startReload(records, getVhc, timelineStore);
         }
       );
     },
@@ -49,7 +49,7 @@ Ext.define('ES.util.Helper.Initialize', {
     * @param {object[]} records Retreive timeline store recorded data
     * @param {int} getVhc Filter the records by checking the user's vehicle ID
     */
-    startReload: function(records, getVhc) {
+    startReload: function(records, getVhc, timelineStore) {
       var list, i;
       var sameVhc = true;
       for (i = 0; i < records.length; i++) {

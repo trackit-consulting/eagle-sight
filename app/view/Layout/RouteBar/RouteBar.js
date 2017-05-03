@@ -1,9 +1,11 @@
 Ext.define('ES.view.Layout.RouteBar.RouteBar', {
   extend: 'Ext.grid.Panel',
+  requires: ['Ext.window.Toast'],
   alias: 'widget.routebar',
   title: 'RouteData',
   controller: 'routebar',
   viewModel: 'routebar',
+  width: '100%',
   forceFit: true,
   store: {
     type: 'routedata'
@@ -37,7 +39,7 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
           return value;
         },
         listeners: {
-          click: 'onItemClick'
+          click: 'cellclick'
         }
       },
       {
@@ -61,7 +63,7 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
           return value;
         },
         listeners: {
-          click: 'onItemClick'
+          click: 'cellclick'
         }
       },
       {
@@ -85,7 +87,7 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
           return value;
         },
         listeners: {
-          click: 'onItemClick'
+          click: 'cellclick'
         }
       },
       {
@@ -109,7 +111,7 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
           return value;
         },
         listeners: {
-          click: 'onItemClick'
+          click: 'cellclick'
         }
       }
     ]
