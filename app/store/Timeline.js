@@ -1,6 +1,7 @@
 Ext.define('ES.store.Timeline', {
   extend: 'Ext.data.Store',
   alias: 'store.timeline',
+  requires: ['Ext.data.proxy.SessionStorage'],
   storeId: 'timeline',
   fields: [{
     name: 'vid',

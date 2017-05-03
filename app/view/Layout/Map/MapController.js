@@ -32,7 +32,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
                         startService();
 
                         function startService() {
-                            var sendPing, countPing = 0;
+                            var sendPing;
                             if (!ES.util.Helper.Validations.validateToken()) {
                                 //Validate and retreive token
                                 ES.util.Helper.Validations.validateTokenProperties(ES.util.Helper.Token.decryptToken());
@@ -57,14 +57,15 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                                 var ping = {};
                                                 ping.type = "ping";
                                                 client.send(JSON.stringify(ping));
-                                                countPing++;
-                                                if (countPing > 2) {
+                                                ES.util.Helper.GlobalVars.countPing++;
+                                                if (ES.util.Helper.GlobalVars.countPing > 3) {
                                                     client.close();
                                                 }
                                             }, 10000);
                                         };
                                         client.onerror = function() {
                                             ES.util.Helper.Alerts.wsErrorAlert();
+                                            console.clear();
                                         };
                                         client.onclose = function() {
                                             ES.util.Helper.Alerts.wsClosedAlert();
@@ -78,7 +79,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                                 //Clean the timeline if necessary
                                                 if (e && e.data) {
                                                     if (JSON.parse(e.data).type === "pong") {
-                                                        countPing = 0;
+                                                        ES.util.Helper.GlobalVars.countPing = 1;
                                                     } else {
                                                         ES.util.Helper.Timeline.cleanTimeline(Ext.getStore('timeline'));
                                                         //Save the received data

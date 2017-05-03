@@ -63,26 +63,7 @@ Ext.define('ES.view.Layout.Map.Map', {
     titleAlign: 'center',
     cls: 'x-toolbar-green',
     title: 'Route Informations',
-    dock: 'bottom',
-    dockedItems: {
-      xtype: 'panel',
-      width: 50,
-      height: 65,
-      bodyStyle: {
-        background: "linear-gradient(to right, #232526, #414345)",
-        "padding-top": "33px",
-        "padding-left": "8px"
-      },
-      dock: 'right',
-      items: {
-        xtype: 'image',
-        id: 'vhcImg',
-        alt: 'vehicle image',
-        width: 35,
-        height: 35,
-        src: 'ext/resources/images/truck_selected.png'
-      }
-    }
+    dock: 'bottom'
   }],
   addInfoWindow: function(string, lat, lng) {
     var pos = new google.maps.LatLng(lat, lng);
