@@ -11,7 +11,7 @@ Ext.define('ES.util.Helper.GlobalVars', {
     ws: "ws://192.168.1.117:8080/", //Websocket address
     protocol: "echo-protocol", 
     countPing: 0,
-    flightPathCoordinates: [] //All route coordinates
+    flightPathCoordinates: [], //All route coordinates
   }
 
   

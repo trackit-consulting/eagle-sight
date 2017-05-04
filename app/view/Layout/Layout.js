@@ -45,11 +45,11 @@ Ext.define('ES.view.Layout.Layout', {
             xtype: 'timelineBar',
             title: locale.timeline,
             cls: 'x-toolbar-green',
-            width: 320,
             collapsible: true,
+            width: 320,
             height: 500,
             style: {
-                background: 'linear-gradient(to left, #385871 , #507ea3)'
+                background: 'linear-gradient(to left, #385871 , ##6cd87e)'
             },
             listeners: {
                 afterrender: {
