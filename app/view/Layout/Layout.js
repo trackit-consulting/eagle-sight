@@ -24,7 +24,9 @@ Ext.define('ES.view.Layout.Layout', {
             id: 'tb',
             height: 80,
             style: {
-                background: 'linear-gradient(to left, #136c5a,#2b5876)',
+                background: 'linear-gradient(to left,#136c5a,#2b5876) ',
+                //(to left, #136c5a,#2b5876)
+                //(to left, #42e589,#12ba2e)
                 'text-align': 'center',
                 'vertical-align': 'middle'
             },
@@ -45,11 +47,11 @@ Ext.define('ES.view.Layout.Layout', {
             xtype: 'timelineBar',
             title: locale.timeline,
             cls: 'x-toolbar-green',
-            width: 320,
             collapsible: true,
+            width: 320,
             height: 500,
             style: {
-                background: 'linear-gradient(to left, #385871 , #507ea3)'
+                background: 'linear-gradient(to left, #385871 , ##6cd87e)'
             },
             listeners: {
                 afterrender: {

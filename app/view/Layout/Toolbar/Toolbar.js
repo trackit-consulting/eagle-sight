@@ -53,31 +53,31 @@ Ext.define('ES.view.Layout.Toolbar.Toolbar', {
 
                             case 1:
 
-                                Ext.getCmp("con").setSrc("ext/resources/connection_icons/network_1.png");
+                                Ext.getCmp("con").setSrc("ext/resources/connected/green-ball.png");
 
                                 break;
 
                             case 2:
 
-                                Ext.getCmp("con").setSrc("ext/resources/connection_icons/network_2.png");
+                                Ext.getCmp("con").setSrc("ext/resources/connected/yellow-ball.png");
 
                                 break;
 
                             case 3:
 
-                                Ext.getCmp("con").setSrc("ext/resources/connection_icons/network_3.png");
+                                Ext.getCmp("con").setSrc("ext/resources/connected/orange-ball.png");
 
                                 break;
 
                             case 4:
 
-                                Ext.getCmp("con").setSrc("ext/resources/connection_icons/network_4.png");
+                                Ext.getCmp("con").setSrc("ext/resources/connected/red-ball.png");
 
                                 break;
 
                             default:
 
-                                Ext.getCmp("con").setSrc("ext/resources/connection_icons/network_4.png");
+                                Ext.getCmp("con").setSrc("ext/resources/connected/red-ball.png");
 
                         }
                     }, 10000);
