@@ -14,6 +14,10 @@ Ext.define('ES.store.RouteData', {
   }, {
     name: 'countdown',
     type: 'string'
+  },
+  {
+    name: 'lp',
+    type: 'string'
   }],
   autoLoad: true,
   data: {
@@ -22,14 +26,17 @@ Ext.define('ES.store.RouteData', {
         at: '',
         dkm: '',
         vel: '',
-        countdown: ''
+        countdown: '',
+        lp: ''
       },
+      /*
       {
         at: '',
         dkm: '',
         vel: '',
         countdown: ''
       }
+      */
     ]
   },
   proxy: {

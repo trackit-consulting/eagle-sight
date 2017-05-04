@@ -82,7 +82,7 @@ Ext.define('ES.util.Helper.Timeline', {
         if (status == google.maps.GeocoderStatus.OK) {
           if (results[0]) {
             newInformation.addInfoWindow(results[0].formatted_address, lat, lng);
-            ES.util.Helper.Routebar.showVel(routeStore, vel);
+            //ES.util.Helper.Routebar.showVel(routeStore, vel);
           } else {
             ES.util.Helper.Alerts.wsNoResults();
           }

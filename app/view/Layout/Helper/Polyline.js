@@ -5,6 +5,7 @@ Ext.define('ES.util.Helper.Polyline', {
     * @param {gmap} map Google Maps Widget
     */
     initPolylineDraw: function(map) {
+      
       var lineSymbol = ES.util.Helper.Polyline.getLineSymbol(parseInt(ES.util.Helper.GlobalVars.vel), ES.util.Helper.Polyline.isParked());
       var flightPath = new google.maps.Polyline({
         path: ES.util.Helper.GlobalVars.flightPathCoordinates,
@@ -18,7 +19,16 @@ Ext.define('ES.util.Helper.Polyline', {
         }]
       });
       ES.util.Helper.Polyline.drawPoints(flightPath, map);
+
+      setTimeout(function(){ 
+
+          flightPath.set("icons", {}); 
+      
+      }, 15000);
+
+
       flightPath.setMap(map);
+
     },
 
     /**
@@ -28,7 +38,7 @@ Ext.define('ES.util.Helper.Polyline', {
     */
     getLineSymbol: function(vel, countVel) {
       var lineSymbol;
-      if (countVel > 2 && vel <= 0) {
+      if (countVel > 1 && vel <= 0) {
         lineSymbol = {
           path: google.maps.SymbolPath.CIRCLE,
           strokeColor: '#841346',
