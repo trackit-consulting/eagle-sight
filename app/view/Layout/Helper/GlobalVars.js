@@ -10,7 +10,7 @@ Ext.define('ES.util.Helper.GlobalVars', {
     isOffline: false, //Check if page expired or offline
     ws: "ws://192.168.1.117:8080/", //Websocket address
     protocol: "echo-protocol", 
-    countPing: 1,
+    countPing: 0,
     flightPathCoordinates: [] //All route coordinates
   }
 
