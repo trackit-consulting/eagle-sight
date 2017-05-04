@@ -24,7 +24,7 @@ Ext.define('ES.view.Layout.Layout', {
             id: 'tb',
             height: 80,
             style: {
-                background: 'linear-gradient(to left, #136c5a,#2b5876)',
+                background: '#136c5a',
                 'text-align': 'center',
                 'vertical-align': 'middle'
             },

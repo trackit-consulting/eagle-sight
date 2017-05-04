@@ -88,7 +88,6 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                                     if (JSON.parse(e.data).type === "pong") {
                                                         //ES.util.Helper.GlobalVars.countPing = 1;
                                                     } else {
-
                                                         ES.util.Helper.Timeline.cleanTimeline(Ext.getStore('timeline'));
                                                         //Save the received data
                                                         ES.util.Helper.Savedata.saveReceivedData(parseFloat(JSON.parse(e.data).params.lastRecord.loc.lat), parseFloat(JSON.parse(e.data).params.lastRecord.loc.lon), parseFloat(localStorage.getItem('dstLat')), parseFloat(localStorage.getItem('dstLng')), parseFloat(JSON.parse(e.data).params.lastRecord.gsp));
@@ -104,7 +103,6 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                                         ES.util.Helper.Polyline.initPolylineDraw(gmappanel.gmap, ES.util.Helper.Polyline.isParked());
                                                         //Follow the last received address, changing the map focus/motion
                                                         ES.util.Helper.Polyline.focusOnAddress(gmappanel.gmap);
-
                                                     }
                                                 }
                                             } else {
