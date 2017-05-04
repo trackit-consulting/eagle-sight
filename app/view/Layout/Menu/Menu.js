@@ -7,7 +7,7 @@ Ext.define('ES.view.Layout.Menu.Menu', {
   id: 'timelineBar',
   autoScroll: true,
   title: 'Timeline',
-  bodyStyle: 'background: #2b5876;',
+  bodyStyle: 'background: #136c5a;',
   autoHeight: true,
   store: {
     type: 'timeline'
@@ -24,11 +24,11 @@ Ext.define('ES.view.Layout.Menu.Menu', {
         align: 'center',
         height: 60,
         style: {
-          "background-color": "#2f699b",
+          "background-color": "#0b4439",
           "color": "white"
         },
         renderer: function(value, metaData) {
-          metaData.style = "background-color:#2b5876; color: white; outline: 1px solid white; padding:20px;";
+          metaData.style = "background-color:#136051; color: white; outline: 1px solid white; padding:20px;";
           return value;
         }
       },
@@ -40,12 +40,12 @@ Ext.define('ES.view.Layout.Menu.Menu', {
         align: 'center',
         height: 60,
         style: {
-          "background-color": "#0b4439",
+          "background-color": "#082620",
           "color": "white",
           "outline": "1px solid #2b5876"
         },
         renderer: function(value, metaData) {
-          metaData.style = "background-color:#136c5a; color: white; outline: 1px solid white; padding:20px";
+          metaData.style = "background-color:#0d342c; color: white; outline: 1px solid white; padding:20px";
           return value;
         },
         listeners: {
@@ -59,12 +59,12 @@ Ext.define('ES.view.Layout.Menu.Menu', {
         align: 'center',
         height: 60,
         style: {
-          "background-color": "#2f699b",
+          "background-color": "#0b4439",
           "color": "white",
           "outline": "1px solid #2b5876"
         },
         renderer: function(value, metaData, record) {
-          metaData.style = "background-color:#2b5876; color: white; outline: 1px solid white; padding: 20px;";
+          metaData.style = "background-color:#136051; color: white; outline: 1px solid white; padding: 20px;";
           switch (value) {
             case 'N':
               return '<img width="13" height="13" src="/ext/resources/directions/north.png" />';

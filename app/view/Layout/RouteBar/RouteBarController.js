@@ -12,6 +12,8 @@ Ext.define('ES.view.Layout.RouteBar.RouteBarController', {
     buildMessage += grid.panel.store.config.data.query[0].dkm + "<br><br>";
     buildMessage += grid.panel.columns[3].text + ":";
     buildMessage += grid.panel.store.config.data.query[0].vel + "<br><br>";
+    buildMessage += grid.panel.columns[4].text + ":";
+    buildMessage += localStorage.getItem("vhcLp");
 
     Ext.Msg.show({
         title:'Info',

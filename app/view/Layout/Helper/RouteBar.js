@@ -33,6 +33,7 @@ Ext.define('ES.util.Helper.Routebar', {
             if (rec.internalId == 1) {
               rec.set("at", response.routes[0].legs[0].duration.text);
               rec.set("dkm", (response.routes[0].legs[0].distance.value) / 1000);
+              rec.set("lp", localStorage.getItem("vhcLp"));
               if (parseInt(ES.util.Helper.GlobalVars.vel) == 0) {
                 rec.set("vel", locale.parked);
               } else {

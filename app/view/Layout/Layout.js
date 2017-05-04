@@ -24,9 +24,7 @@ Ext.define('ES.view.Layout.Layout', {
             id: 'tb',
             height: 80,
             style: {
-                background: 'linear-gradient(to left,#136c5a,#2b5876) ',
-                //(to left, #136c5a,#2b5876)
-                //(to left, #42e589,#12ba2e)
+                background: '#136c5a',
                 'text-align': 'center',
                 'vertical-align': 'middle'
             },
@@ -63,7 +61,8 @@ Ext.define('ES.view.Layout.Layout', {
                         }
                     }
                 }
-            },
+            }
+            /*,
             plugins: 'responsive',
             dockedItems: [{
                 xtype: 'panel',
@@ -80,6 +79,7 @@ Ext.define('ES.view.Layout.Layout', {
                 },
                 html: '<a style="text-decoration: none; color:white" target="_blank" href="http://www.trackit.pt/en/about-us/">' + locale.about + ' | </a><a target="_blank" style="text-decoration: none; color:white" href="http://www.trackit.pt/en/trackit-news/">' + locale.news + '</a><a style="text-decoration: none; color:white" target="_blank" href="http://www.trackit.pt/en/contacts/"> | ' + locale.contacts + '</a>'
             }]
+            */
         }
     ]
 });

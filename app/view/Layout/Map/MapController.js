@@ -29,25 +29,31 @@ Ext.define('ES.view.Layout.Map.MapController', {
                 'map': {
                     mapready: function(gmappanel) {
 
+                        var isInitialized = false;
+
                         startService();
 
                         function startService() {
                             var sendPing;
                             if (!ES.util.Helper.Validations.validateToken()) {
                                 //Validate and retreive token
+                                if(!isInitialized){
                                 ES.util.Helper.Validations.validateTokenProperties(ES.util.Helper.Token.decryptToken());
                                 ES.util.Helper.Token.retreiveTokenProperties(ES.util.Helper.Token.decryptToken());
                                 //Countdown to show how long does it take for the link to expire
                                 ES.util.Helper.Counter.startNewCountdown(Ext.getStore('timeline'), Ext.getStore('routedata'));
+                                }
                                 setTimeout(function() {
                                     if (!ES.util.Helper.GlobalVars.isOffline) {
                                         //Recover all the saved data in sessions and shows to the user when the page refreshes
-                                        ES.util.Helper.Initialize.reloadSavedData(Ext.getStore('timeline'), localStorage.getItem('mid'));
-                                        ES.util.Helper.Polyline.initPolylineDraw(gmappanel.gmap);
+                                        if(!isInitialized){
+                                            ES.util.Helper.Initialize.reloadSavedData(Ext.getStore('timeline'), localStorage.getItem('mid'));
+                                            ES.util.Helper.Polyline.initPolylineDraw(gmappanel.gmap);
+                                        }
                                         //Creates a new Websocket
                                         client = new WebSocket(ES.util.Helper.GlobalVars.ws, ES.util.Helper.GlobalVars.protocol);
                                         client.onopen = function() {
-                                            ES.util.Helper.Alerts.wsOpenedAlert();
+                                            //ES.util.Helper.Alerts.wsOpenedAlert();
                                             //Sends the token data to the server
                                             ES.util.Helper.Initialize.sendData(client, ES.util.Helper.Token.decryptToken());
 
@@ -57,19 +63,20 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                                 var ping = {};
                                                 ping.type = "ping";
                                                 client.send(JSON.stringify(ping));
-                                                ES.util.Helper.GlobalVars.countPing++;
+                                                //ES.util.Helper.GlobalVars.countPing++;
                                                 if (ES.util.Helper.GlobalVars.countPing > 3) {
                                                     client.close();
                                                 }
-                                            }, 10000);
+                                            }, 15000);
                                         };
                                         client.onerror = function() {
                                             ES.util.Helper.Alerts.wsErrorAlert();
-                                            console.clear();
                                         };
                                         client.onclose = function() {
                                             ES.util.Helper.Alerts.wsClosedAlert();
                                             setTimeout(function() {
+                                                
+                                            isInitialized = true;
                                                 startService();
                                             }, 10000);
                                             clearInterval(sendPing);
@@ -79,7 +86,7 @@ Ext.define('ES.view.Layout.Map.MapController', {
                                                 //Clean the timeline if necessary
                                                 if (e && e.data) {
                                                     if (JSON.parse(e.data).type === "pong") {
-                                                        ES.util.Helper.GlobalVars.countPing = 1;
+                                                        //ES.util.Helper.GlobalVars.countPing = 1;
                                                     } else {
                                                         ES.util.Helper.Timeline.cleanTimeline(Ext.getStore('timeline'));
                                                         //Save the received data
