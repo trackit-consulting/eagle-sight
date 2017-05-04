@@ -7,6 +7,7 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
   viewModel: 'routebar',
   width: '100%',
   forceFit: true,
+  header: false,
   store: {
     type: 'routedata'
   },
@@ -93,6 +94,30 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
       {
         text: locale.vel,
         dataIndex: 'vel',
+        height: 45,
+        align: 'center',
+        style: {
+          "background-color": "#0b4439",
+          "color": "white",
+          "border-right": "1px solid #237263"
+        },
+        renderer: function(value, metaData) {
+          var color;
+          if (metaData.rowIndex == 1) {
+            color = "#204056";
+          } else {
+            color = "#1b6053";
+          }
+          metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
+          return value;
+        },
+        listeners: {
+          click: 'cellclick'
+        }
+      },
+      {
+        text: "LP",
+        dataIndex: 'lp',
         height: 45,
         align: 'center',
         style: {

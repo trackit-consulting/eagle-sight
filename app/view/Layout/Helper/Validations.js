@@ -27,7 +27,7 @@ Ext.define('ES.util.Helper.Validations', {
     * @param {object} dec Decrypted Token
     */
     validateTokenProperties: function(dec) {
-      if (dec && JSON.parse(dec).hasOwnProperty('lng') && JSON.parse(dec).hasOwnProperty('lat') && JSON.parse(dec).hasOwnProperty('vid') && JSON.parse(dec).hasOwnProperty('epoch') && JSON.parse(dec).hasOwnProperty('type')) {
+      if (dec && JSON.parse(dec).hasOwnProperty('lng') && JSON.parse(dec).hasOwnProperty('lat') && JSON.parse(dec).hasOwnProperty('vid') && JSON.parse(dec).hasOwnProperty('epoch') && JSON.parse(dec).hasOwnProperty('type') && JSON.parse(dec).hasOwnProperty('lp')) {
         return true;
       } else {
         return false;
