@@ -40,14 +40,14 @@ Ext.define('ES.view.Layout.Toolbar.Toolbar', {
             xtype: 'image',
             alt: 'connection',
             id: 'con',
-            width: 25,
-            height: 25,
+            width: 15,
+            height: 15,
             style: {
-                "margin-right": "-16px"
+            
             },
             listeners: {
                 afterrender: function() {
-
+ 
                     setInterval(function() {
                         switch (ES.util.Helper.GlobalVars.countPing) {
 
@@ -74,13 +74,13 @@ Ext.define('ES.view.Layout.Toolbar.Toolbar', {
                                 Ext.getCmp("con").setSrc("ext/resources/connected/red-ball.png");
 
                                 break;
-
+                            
                             default:
 
                                 Ext.getCmp("con").setSrc("ext/resources/connected/red-ball.png");
 
                         }
-                    }, 10000);
+                    }, 5000);
                 }
             }
 

@@ -10,7 +10,7 @@ Ext.define('ES.view.Layout.Map.Map', {
   center: new google.maps.LatLng(40.350054, -8.5809265),
   mapOptions: {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    maxZoom: 6,
+    //maxZoom: 6,
     minZoom: 6,
     streetViewControlOptions: {
       position: google.maps.ControlPosition.RIGHT_TOP
@@ -67,7 +67,7 @@ Ext.define('ES.view.Layout.Map.Map', {
   }],
   addInfoWindow: function(string, lat, lng) {
     var pos = new google.maps.LatLng(lat, lng);
-    map.setZoom(12);
+    //map.setZoom(12);
     var infowindow = new google.maps.InfoWindow();
     var marker = new google.maps.Marker({
       position: pos,

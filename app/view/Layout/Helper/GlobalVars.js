@@ -6,13 +6,12 @@ Ext.define('ES.util.Helper.GlobalVars', {
     lat2: 0, //Latitude from destination address
     lon2: 0,//Longitude from destination address
     vel: 0, //Current speed
-    lp: 0,
+    lp: 0, 
     isOffline: false, //Check if page expired or offline
-    ws: "ws://192.168.1.117:8080/", //Websocket address
+    ws: "ws://192.168.1.125:8080/", //Websocket address
     protocol: "echo-protocol", 
     countPing: 0,
+    countTime: 0,
     flightPathCoordinates: [], //All route coordinates
-  }
-
-  
+  } 
 });

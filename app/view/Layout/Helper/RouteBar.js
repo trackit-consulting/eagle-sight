@@ -29,34 +29,15 @@ Ext.define('ES.util.Helper.Routebar', {
     updateRoutebarData: function(directionsService, routeStore, request) {
       directionsService.route(request, function(response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
-          routeStore.each(function(rec) {
-            if (rec.internalId == 1) {
-              rec.set("at", response.routes[0].legs[0].duration.text);
-              rec.set("dkm", (response.routes[0].legs[0].distance.value) / 1000);
-              rec.set("lp", localStorage.getItem("vhcLp"));
-              if (parseInt(ES.util.Helper.GlobalVars.vel) == 0) {
-                rec.set("vel", locale.parked);
-              } else {
-                rec.set("vel", ES.util.Helper.GlobalVars.vel);
+          var rec = routeStore.getRange();
+              rec[0].set("at", response.routes[0].legs[0].duration.text);
+              rec[0].set("dkm", (response.routes[0].legs[0].distance.value) / 1000);
+              rec[0].set("lp", localStorage.getItem("vhcLp"));
+              if (parseInt(ES.util.Helper.GlobalVars.vel) > 0) {
+                rec[0].set("vel", ES.util.Helper.GlobalVars.vel);
+              }else{
+                rec[0].set("vel", locale.parked);
               }
-            }
-          });
-        }
-      });
-    },
-   /**
-    * Request information to fill the route bar
-    * @param {int} vel Check if car is parked or not
-    * @param {object[]} routeStore Retreive route store
-    */
-    showVel: function(routeStore, vel) {
-      routeStore.each(function(rec) {
-        if (rec.internalId == 2) {
-          if (parseInt(vel) == 0) {
-            rec.set("vel", locale.parked);
-          } else {
-            rec.set("vel", vel);
-          }
         }
       });
     }

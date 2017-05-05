@@ -1,144 +1,132 @@
 Ext.define('ES.view.Layout.RouteBar.RouteBar', {
-  extend: 'Ext.grid.Panel',
-  requires: ['Ext.window.Toast'],
-  alias: 'widget.routebar',
-  title: 'RouteData',
-  controller: 'routebar',
-  viewModel: 'routebar',
-  width: '100%',
-  forceFit: true,
-  header: false,
-  store: {
-    type: 'routedata'
-  },
-  viewConfig: {
-    markDirty: false
-  },
-  columns: {
-    border: false,
-    defaults: {
-      hoverCls: ''
+    extend: 'Ext.grid.Panel',
+    requires: ['Ext.window.Toast'],
+    alias: 'widget.routebar',
+    title: 'RouteData',
+    controller: 'routebar',
+    viewModel: 'routebar',
+    width: '100%',
+    forceFit: true,
+    header: false,
+    store: {
+        type: 'routedata'
     },
-    items: [{
-        text: locale.at,
-        dataIndex: 'at',
-        height: 45,
-        align: 'center',
-        style: {
-          "background-color": "#0b4439",
-          "color": "white",
-          "border-right": "1px solid #237263"
+    viewConfig: {
+        markDirty: false
+    },
+    columns: {
+        border: false,
+        defaults: {
+            hoverCls: ''
         },
-        renderer: function(value, metaData) {
-          var color;
-          if (metaData.rowIndex == 1) {
-            color = "#204056";
-          } else {
-            color = "#1b6053";
-          }
-          metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
-          return value;
-        },
-        listeners: {
-          click: 'cellclick'
-        }
-      },
-      {
-        text: locale.countdown,
-        dataIndex: 'countdown',
-        height: 45,
-        align: 'center',
-        style: {
-          "background-color": "#0b4439",
-          "color": "white",
-          "border-right": "1px solid #237263"
-        },
-        renderer: function(value, metaData) {
-          var color;
-          if (metaData.rowIndex == 1) {
-            color = "#204056";
-          } else {
-            color = "#1b6053";
-          }
-          metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
-          return value;
-        },
-        listeners: {
-          click: 'cellclick'
-        }
-      },
-      {
-        text: locale.dkm,
-        dataIndex: 'dkm',
-        height: 45,
-        align: 'center',
-        style: {
-          "background-color": "#0b4439",
-          "color": "white",
-          "border-right": "1px solid #237263"
-        },
-        renderer: function(value, metaData) {
-          var color;
-          if (metaData.rowIndex == 1) {
-            color = "#204056";
-          } else {
-            color = "#1b6053";
-          }
-          metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
-          return value;
-        },
-        listeners: {
-          click: 'cellclick'
-        }
-      },
-      {
-        text: locale.vel,
-        dataIndex: 'vel',
-        height: 45,
-        align: 'center',
-        style: {
-          "background-color": "#0b4439",
-          "color": "white",
-          "border-right": "1px solid #237263"
-        },
-        renderer: function(value, metaData) {
-          var color;
-          if (metaData.rowIndex == 1) {
-            color = "#204056";
-          } else {
-            color = "#1b6053";
-          }
-          metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
-          return value;
-        },
-        listeners: {
-          click: 'cellclick'
-        }
-      },
-      {
-        text: "LP",
-        dataIndex: 'lp',
-        height: 45,
-        align: 'center',
-        style: {
-          "background-color": "#0b4439",
-          "color": "white",
-          "border-right": "1px solid #237263"
-        },
-        renderer: function(value, metaData) {
-          var color;
-          if (metaData.rowIndex == 1) {
-            color = "#204056";
-          } else {
-            color = "#1b6053";
-          }
-          metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
-          return value;
-        },
-        listeners: {
-          click: 'cellclick'
-        }
-      }
-    ]
-  }
+        items: [{
+                text: locale.at,
+                dataIndex: 'at',
+                height: 45,
+                align: 'center',
+                style: {
+                    "background-color": "#0b4439",
+                    "color": "white",
+                    "border-right": "1px solid #237263"
+                },
+                renderer: function(value, metaData) {
+                    var color = "#1b6053";
+                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
+                    return value;
+                },
+                listeners: {
+                    click: 'cellclick'
+                }
+            },
+            {
+                text: locale.countdown,
+                dataIndex: 'countdown',
+                height: 45,
+                align: 'center',
+                style: {
+                    "background-color": "#0b4439",
+                    "color": "white",
+                    "border-right": "1px solid #237263"
+                },
+                renderer: function(value, metaData) {
+                    var color = "#1b6053";
+
+                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
+                    return value;
+                },
+                listeners: {
+                    click: 'cellclick'
+                }
+            },
+            {
+                text: locale.dkm,
+                dataIndex: 'dkm',
+                height: 45,
+                align: 'center',
+                style: {
+                    "background-color": "#0b4439",
+                    "color": "white",
+                    "border-right": "1px solid #237263"
+                },
+                renderer: function(value, metaData) {
+                    var color = "#1b6053";
+
+                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
+                    return value;
+                },
+                listeners: {
+                    click: 'cellclick'
+                }
+            },
+            {
+                text: locale.vel,
+                dataIndex: 'vel',
+                height: 45,
+                align: 'center',
+                style: {
+                    "background-color": "#0b4439",
+                    "color": "white",
+                    "border-right": "1px solid #237263"
+                },
+                renderer: function(value, metaData) {
+                    var color;
+                    if (value === locale.parked) {
+                        color = "#ad2e4c";
+                        ES.util.Helper.GlobalVars.countTime++;
+                        var minutes = "0" + Math.floor(ES.util.Helper.GlobalVars.countTime / 60);
+                        var seconds = "0" + (ES.util.Helper.GlobalVars.countTime - minutes * 60);
+                        value = value + " (" + minutes.substr(-2) + ":" + seconds.substr(-2) + ")";
+                    } else {
+                        color = "#1b6053";
+                        ES.util.Helper.GlobalVars.countTime = 0;
+                    }
+                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
+                    return value;
+                },
+                listeners: {
+                    click: 'cellclick'
+                }
+            },
+            {
+                text: "LP",
+                dataIndex: 'lp',
+                height: 45,
+                align: 'center',
+                style: {
+                    "background-color": "#0b4439",
+                    "color": "white",
+                    "border-right": "1px solid #237263"
+                },
+                renderer: function(value, metaData) {
+                    var color = "#1b6053";
+
+                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
+                    return value;
+                },
+                listeners: {
+                    click: 'cellclick'
+                }
+            }
+        ]
+    }
 });

@@ -1,6 +1,7 @@
 Ext.define('ES.view.Layout.Menu.Menu', {
   extend: 'Ext.grid.Panel',
   alias: 'widget.timelineBar',
+  requires: ['ES.util.Helper.Colors'],
   controller: 'menu',
   viewModel: 'menu',
   overflowY: 'auto',
@@ -24,7 +25,7 @@ Ext.define('ES.view.Layout.Menu.Menu', {
         align: 'center',
         height: 60,
         style: {
-          "background-color": "#0b4439",
+          "background-color": ES.util.Helper.Colors.timelineRow,
           "color": "white"
         },
         renderer: function(value, metaData) {
@@ -59,7 +60,7 @@ Ext.define('ES.view.Layout.Menu.Menu', {
         align: 'center',
         height: 60,
         style: {
-          "background-color": "#0b4439",
+          "background-color": ES.util.Helper.Colors.timelineRow,
           "color": "white",
           "outline": "1px solid #2b5876"
         },
