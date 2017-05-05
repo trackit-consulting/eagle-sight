@@ -1,10 +1,11 @@
 $app-name:  dynamic( 'ES' );
-$image-search-path: 'C:/Users/manuel/Documents/GitHub/eagle-sight/build/development/ES/classic/resources';
+$image-search-path: 'C:/Users/Rúben Diogo/Documents/GitHub/eagle-sight/build/development/ES/classic/resources';
 $theme-name:  dynamic( 'theme-triton' );
 $include-es-application: dynamic(true);;
 $include-es-store-routedata: dynamic(true);;
 $include-es-store-timeline: dynamic(true);;
 $include-es-util-helper-alerts: dynamic(true);;
+$include-es-util-helper-colors: dynamic(true);;
 $include-es-util-helper-counter: dynamic(true);;
 $include-es-util-helper-globalvars: dynamic(true);;
 $include-es-util-helper-initialize: dynamic(true);;

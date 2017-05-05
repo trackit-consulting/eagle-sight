@@ -24,7 +24,7 @@ Ext.define('ES.util.Helper.Polyline', {
 
           flightPath.set("icons", {}); 
       
-      }, 15000);
+      }, 60000);
 
 
       flightPath.setMap(map);
@@ -74,7 +74,7 @@ Ext.define('ES.util.Helper.Polyline', {
       }
     },
 
-    checkIfParked: function() {
+    checkIfParked: function(routeStore) {  
       if (ES.util.Helper.GlobalVars.vel == 0) {
         ES.util.Helper.GlobalVars.countVel++;
       }
