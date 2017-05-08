@@ -93,6 +93,7 @@ Ext.define('ES.util.Helper.Polyline', {
     */
     focusOnAddress: function(map) {
       map.panTo(new google.maps.LatLng(ES.util.Helper.GlobalVars.lat1, ES.util.Helper.GlobalVars.lon1));
+      map.setZoom(12);
     }
   }
   });

@@ -28,7 +28,8 @@ Ext.define('ES.view.Layout.Map.MapController', {
             component: {
                 'map': {
                     mapready: function(gmappanel) {
-
+                        
+                        gmappanel.gmap.setZoom(6);
                         var isInitialized = false;
 
                         startService();
