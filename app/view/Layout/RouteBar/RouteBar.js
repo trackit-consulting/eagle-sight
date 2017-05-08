@@ -1,6 +1,6 @@
 Ext.define('ES.view.Layout.RouteBar.RouteBar', {
     extend: 'Ext.grid.Panel',
-    requires: ['Ext.window.Toast'],
+    requires: ['Ext.window.Toast', 'ES.util.Helper.Colors'],
     alias: 'widget.routebar',
     title: 'RouteData',
     controller: 'routebar',
@@ -25,13 +25,12 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                 height: 45,
                 align: 'center',
                 style: {
-                    "background-color": "#0b4439",
+                    "background-color":  ES.util.Helper.Colors.routeBarHeader,
                     "color": "white",
                     "border-right": "1px solid #237263"
                 },
                 renderer: function(value, metaData) {
-                    var color = "#1b6053";
-                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
+                    metaData.style = "background-color:" + ES.util.Helper.Colors.routeBarRows + "; color: white;  border-right: 1px solid #33776a";
                     return value;
                 },
                 listeners: {
@@ -44,14 +43,14 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                 height: 45,
                 align: 'center',
                 style: {
-                    "background-color": "#0b4439",
+                    "background-color":  ES.util.Helper.Colors.routeBarHeader,
                     "color": "white",
                     "border-right": "1px solid #237263"
                 },
                 renderer: function(value, metaData) {
                     var color = "#1b6053";
 
-                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
+                    metaData.style = "background-color:" + ES.util.Helper.Colors.routeBarRows + "; color: white;  border-right: 1px solid #33776a";
                     return value;
                 },
                 listeners: {
@@ -64,14 +63,14 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                 height: 45,
                 align: 'center',
                 style: {
-                    "background-color": "#0b4439",
+                    "background-color":  ES.util.Helper.Colors.routeBarHeader,
                     "color": "white",
                     "border-right": "1px solid #237263"
                 },
                 renderer: function(value, metaData) {
                     var color = "#1b6053";
 
-                    metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
+                    metaData.style = "background-color:" + ES.util.Helper.Colors.routeBarRows + "; color: white;  border-right: 1px solid #33776a";
                     return value;
                 },
                 listeners: {
@@ -84,7 +83,7 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                 height: 45,
                 align: 'center',
                 style: {
-                    "background-color": "#0b4439",
+                    "background-color":  ES.util.Helper.Colors.routeBarHeader,
                     "color": "white",
                     "border-right": "1px solid #237263"
                 },
@@ -97,7 +96,7 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                         var seconds = "0" + (ES.util.Helper.GlobalVars.countTime - minutes * 60);
                         value = value + " (" + minutes.substr(-2) + ":" + seconds.substr(-2) + ")";
                     } else {
-                        color = "#1b6053";
+                        color = ES.util.Helper.Colors.routeBarRows;
                         ES.util.Helper.GlobalVars.countTime = 0;
                     }
                     metaData.style = "background-color:" + color + "; color: white;  border-right: 1px solid #33776a";
@@ -113,7 +112,7 @@ Ext.define('ES.view.Layout.RouteBar.RouteBar', {
                 height: 45,
                 align: 'center',
                 style: {
-                    "background-color": "#0b4439",
+                    "background-color":  ES.util.Helper.Colors.routeBarHeader,
                     "color": "white",
                     "border-right": "1px solid #237263"
                 },

@@ -7,7 +7,8 @@ Ext.define('ES.view.Layout.Layout', {
         'ES.view.Layout.LayoutModel',
         'ES.view.Layout.Toolbar.ToolbarController',
         'ES.view.Layout.Toolbar.ToolbarModel',
-        'ES.util.Helper.Mobile'
+        'ES.util.Helper.Mobile',
+        'ES.util.Helper.Colors'
     ],
     controller: 'layout',
     viewModel: 'layout',
@@ -49,7 +50,7 @@ Ext.define('ES.view.Layout.Layout', {
             width: 320,
             height: 500,
             style: {
-                background: 'linear-gradient(to left, #385871 , ##6cd87e)'
+                background: ES.util.Helper.Colors.toolbarBg
             },
             listeners: {
                 afterrender: {
